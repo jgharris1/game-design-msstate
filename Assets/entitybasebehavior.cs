@@ -17,11 +17,11 @@ public class entitybasebehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        targetDif.Set(targetPos.x - transform.position.x, targetPos.y - transform.position.y, 0);
+        targetDif.Set(targetPos.x - transform.parent.position.x, targetPos.y - transform.parent.position.y, 0);
         if((Mathf.Abs(targetDif.x) + Mathf.Abs(targetDif.y)) != 0)
         {
             targetDif = Vector3.Normalize(targetDif);
         }
-        transform.position = transform.position + (targetDif * entitySpeed) * Time.deltaTime;
+        transform.parent.position = transform.parent.position + (targetDif * entitySpeed) * Time.deltaTime;
     }
 }
