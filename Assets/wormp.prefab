@@ -165,4 +165,3 @@ MonoBehaviour:
   Selfdata: {fileID: 0}
   targetDif: {x: 0, y: 0, z: 0}
   targetPos: {x: 0, y: 0, z: 0}
-  head: 1
