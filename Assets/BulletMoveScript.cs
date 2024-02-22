@@ -17,6 +17,10 @@ public class BulletMoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.x + transform.position.y > 100)//100 is arbitrary, just has to be offscreen
+        {
+            Destroy(gameObject);
+        }
         Selfdata.targetPos.Set((transform.position.x + bulletDir.x) * speed, (transform.position.y + bulletDir.y) * speed, 0);
     }
 }
