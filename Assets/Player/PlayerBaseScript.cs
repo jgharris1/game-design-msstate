@@ -6,7 +6,7 @@ public class PlayerBaseScript : MonoBehaviour
 {
 
     public Vector3 playerDir;
-    private float cooldown = 1.0f;
+    public float cooldown;
     private float timer = 0.0f;
     public float entitySpeed;
     public GameObject bulletPrefab;

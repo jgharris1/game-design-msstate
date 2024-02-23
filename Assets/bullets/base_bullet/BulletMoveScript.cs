@@ -9,10 +9,21 @@ public class BulletMoveScript : MonoBehaviour
     public GameObject Playerdata;
     public float speed;
     public float range;
-    public float pierce = 1;
+    public float pierce;
+    public damageData attack;
+    public int damage;
+    public int statusId;
+    public int statusLevel;
+    public float statusDur;
+
     // Start is called before the first frame update
     void Start()
     {
+        attack = new damageData();
+        attack.damage = damage;
+        attack.statusId = statusId;
+        attack.statusLevel = statusLevel;
+        attack.statusDur = statusDur;
         Vector3 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Playerdata = GameObject.FindWithTag("Player");
         bulletDir.Set(mPosition.x - transform.position.x, mPosition.y - transform.position.y, 0);
@@ -38,11 +49,11 @@ public class BulletMoveScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Enemy")//will need to be an enemy tag if multiple enemies
+        if (collision.gameObject.tag == "Enemy")//will need to be an enemy tag if multiple enemies
         {
-            collision.gameObject.GetComponent<enemybasescript>().damageApply();//damage, statusId, statusLevel, duration);
+            collision.gameObject.SendMessage("damageApply", attack.SaveToString());
             pierce -= 1;
-            if (pierce == 0)
+            if (pierce <= 0)
             {
                 Destroy(gameObject);
             }

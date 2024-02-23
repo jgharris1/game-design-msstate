@@ -50,6 +50,11 @@ MonoBehaviour:
   Playerdata: {fileID: 0}
   speed: 2
   range: 10
+  pierce: 0
+  damage: 3
+  statusId: 0
+  statusLevel: 0
+  statusDur: 0
 --- !u!212 &2684754897011931407
 SpriteRenderer:
   m_ObjectHideFlags: 0

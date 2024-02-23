@@ -9,6 +9,7 @@ public class enemybasescript : MonoBehaviour
     public int health = 10;
     public float entitySpeed;
     public bool lineFollow = false;
+    private damageData attack;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,12 +38,18 @@ public class enemybasescript : MonoBehaviour
     }
 
     [ContextMenu("Apply Damage")]
-    public void damageApply()//int damage, int statusId = 0, int statusLevel = 0, float duration = 0)
+    public void damageApply(string attackStr)//, int statusId = 0, int statusLevel = 0, float duration = 0)
     {
-        health -= 1;
+        attack = JsonUtility.FromJson<damageData>(attackStr);
+        health -= attack.damage;
         if (health <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void setData(string data)
+    {
+        entitySpeed = 1;
     }
 }
