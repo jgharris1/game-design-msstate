@@ -9,10 +9,18 @@ public class enemybasescript : MonoBehaviour
     public int health = 10;
     public float entitySpeed;
     public bool lineFollow = false;
-    private damageData attack;
+    public float immuneFrame = 0;
+    private damageData attackin;
+    private damageData attackout;
+    public int damage;
     // Start is called before the first frame update
     void Start()
     {
+        attackout = new damageData();
+        attackout.damage = damage;
+        attackout.statusId = 0;
+        attackout.statusLevel = 0;
+        attackout.statusDur = 0;
         Playerdata = GameObject.FindWithTag("Player");
         targetDif = new Vector3(0.0f, 0.0f, 0.0f);
     }
@@ -20,6 +28,7 @@ public class enemybasescript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        immuneFrame -= Time.deltaTime;
         if (!lineFollow)
         {
             targetDif.Set(Playerdata.transform.position.x - transform.position.x, Playerdata.transform.position.y - transform.position.y, 0);
@@ -40,8 +49,8 @@ public class enemybasescript : MonoBehaviour
     [ContextMenu("Apply Damage")]
     public void damageApply(string attackStr)//, int statusId = 0, int statusLevel = 0, float duration = 0)
     {
-        attack = JsonUtility.FromJson<damageData>(attackStr);
-        health -= attack.damage;
+        attackin = JsonUtility.FromJson<damageData>(attackStr);
+        health -= attackin.damage;
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -51,5 +60,17 @@ public class enemybasescript : MonoBehaviour
     public void setData(string data)
     {
         entitySpeed = 1;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (immuneFrame <= 0)
+        {
+            if (collision.gameObject.tag == "Player")//will need to be an enemy tag if multiple enemies
+            {
+                collision.gameObject.SendMessage("damageApply", attackout.SaveToString());
+                gameObject.SendMessage("damageApply", attackout.SaveToString());
+            }
+        }
     }
 }

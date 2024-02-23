@@ -8,9 +8,12 @@ public class PlayerBaseScript : MonoBehaviour
     public Vector3 playerDir;
     public float cooldown;
     private float timer = 0.0f;
+    public int health;
     public float entitySpeed;
     public GameObject bulletPrefab;
     GameObject bullet;
+    public damageData attack;
+    public GameObject deathCam;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +53,16 @@ public class PlayerBaseScript : MonoBehaviour
         {
             playerDir = Vector3.Normalize(playerDir);
             transform.position = transform.position + (playerDir * entitySpeed) * Time.deltaTime;
+        }
+    }
+
+    public void damageApply(string attackStr)//, int statusId = 0, int statusLevel = 0, float duration = 0)
+    {
+        attack = JsonUtility.FromJson<damageData>(attackStr);
+        health -= attack.damage;
+        if (health <= 0)
+        {
+            Time.timeScale = 0;
         }
     }
 }

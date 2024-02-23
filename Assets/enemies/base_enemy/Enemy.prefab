@@ -166,3 +166,5 @@ MonoBehaviour:
   health: 10
   entitySpeed: 0
   lineFollow: 0
+  immuneFrame: 2
+  damage: 1
