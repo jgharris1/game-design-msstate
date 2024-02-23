@@ -40,7 +40,7 @@ public class enemybasescript : MonoBehaviour
     public void damageApply()//int damage, int statusId = 0, int statusLevel = 0, float duration = 0)
     {
         health -= 1;
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
