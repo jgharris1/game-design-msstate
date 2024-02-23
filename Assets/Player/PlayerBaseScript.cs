@@ -5,16 +5,17 @@ using UnityEngine;
 public class PlayerBaseScript : MonoBehaviour
 {
 
-    public entitybasebehavior Selfdata;
     public Vector3 playerDir;
     private float cooldown = 1.0f;
     private float timer = 0.0f;
+    public float entitySpeed;
     public GameObject bulletPrefab;
     GameObject bullet;
     // Start is called before the first frame update
     void Start()
     {
         playerDir = new Vector3(0.0f, 0.0f, 0.0f);
+        GetComponent<Rigidbody2D>().freezeRotation = true;
     }
 
     // Update is called once per frame
@@ -24,7 +25,7 @@ public class PlayerBaseScript : MonoBehaviour
 
         if (timer > cooldown)
         {
-            bullet = Instantiate(bulletPrefab);
+            bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
             timer = 0.0f;
         }
         playerDir.Set(0, 0, 0);
@@ -44,7 +45,11 @@ public class PlayerBaseScript : MonoBehaviour
         {
             playerDir.Set(playerDir.x + 1, playerDir.y, 0);
         }
-        Selfdata.targetPos.Set(transform.position.x + playerDir.x, transform.position.y + playerDir.y, 0);
-
+        //Selfdata.targetPos.Set(transform.position.x + playerDir.x, transform.position.y + playerDir.y, 0);
+        if ((Mathf.Abs(playerDir.x) + Mathf.Abs(playerDir.y)) != 0)
+        {
+            playerDir = Vector3.Normalize(playerDir);
+            transform.position = transform.position + (playerDir * entitySpeed) * Time.deltaTime;
+        }
     }
 }

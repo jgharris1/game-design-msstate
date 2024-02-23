@@ -144,7 +144,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Playerdata: {fileID: 0}
-  Selfdata: {fileID: 0}
   targetDif: {x: 0, y: 0, z: 0}
   entitySpeed: 0
+  lineFollow: 0

@@ -4,32 +4,48 @@ using UnityEngine;
 
 public class BulletMoveScript : MonoBehaviour
 {
-    public entitybasebehavior Selfdata;
+    //public entitybasebehavior Selfdata;
     public Vector3 bulletDir;
+    public GameObject Playerdata;
     public float speed;
+    public float range;
+    public float pierce = 1;
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 mPosition = Input.mousePosition;
-        bulletDir = mPosition;
+        Vector3 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Playerdata = GameObject.FindWithTag("Player");
+        bulletDir.Set(mPosition.x - transform.position.x, mPosition.y - transform.position.y, 0);
+        if ((Mathf.Abs(bulletDir.x) + Mathf.Abs(bulletDir.y)) != 0)
+        {
+            bulletDir = Vector3.Normalize(bulletDir);
+        }
+        else
+        {
+            bulletDir.Set(1, 0, 0);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x + transform.position.y > 100)//100 is arbitrary, just has to be offscreen
+        if (Vector3.Distance(Playerdata.transform.position, transform.position) > range)//100 is arbitrary, just has to be offscreen
         {
             Destroy(gameObject);
         }
-
-        Selfdata.targetPos.Set((transform.position.x + bulletDir.x) * speed, (transform.position.y + bulletDir.y) * speed, 0);
+        transform.position = transform.position + (bulletDir * speed) * Time.deltaTime;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Enemy")//will need to be an enemy tag if multiple enemies
         {
-            //uncomment the below when enemy damage exists
-            //damageApply(enemygameobject, damage, statusId, statusLevel, duration);
+            collision.gameObject.GetComponent<enemybasescript>().damageApply();//damage, statusId, statusLevel, duration);
+            pierce -= 1;
+            if (pierce == 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
