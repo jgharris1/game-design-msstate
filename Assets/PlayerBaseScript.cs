@@ -7,6 +7,10 @@ public class PlayerBaseScript : MonoBehaviour
 
     public entitybasebehavior Selfdata;
     public Vector3 playerDir;
+    private float cooldown = 1.0f;
+    private float timer = 0.0f;
+    public GameObject bulletPrefab;
+    GameObject bullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +20,13 @@ public class PlayerBaseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+
+        if (timer > cooldown)
+        {
+            bullet = Instantiate(bulletPrefab);
+            timer = 0.0f;
+        }
         playerDir.Set(0, 0, 0);
         if (Input.GetKey(KeyCode.W))
         {
