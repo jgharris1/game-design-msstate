@@ -45,5 +45,6 @@ public class PlayerBaseScript : MonoBehaviour
             playerDir.Set(playerDir.x + 1, playerDir.y, 0);
         }
         Selfdata.targetPos.Set(transform.position.x + playerDir.x, transform.position.y + playerDir.y, 0);
+
     }
 }
