@@ -9,7 +9,8 @@ public class spawnerscript : MonoBehaviour
     public float spawnDistMax;
     public float spawnRate;
     private float spawnTimer;
-    private float timeRem;
+    private float waveTimer;
+    private float waveGoal;
     public Vector3 parentLoc;
     public string currentEnemy;
     public Vector3 dirVec;
@@ -26,9 +27,9 @@ public class spawnerscript : MonoBehaviour
     void Update()
     {
         parentLoc = transform.parent.transform.position;
-        timeRem -= Time.deltaTime;
+        waveTimer += Time.deltaTime;
         spawnTimer -= Time.deltaTime;
-        if (timeRem < 0)
+        if (waveTimer < waveGoal)
         {
             nextWave();
         }
@@ -40,7 +41,7 @@ public class spawnerscript : MonoBehaviour
 
     public void nextWave()
     {
-        timeRem = 20f;
+        waveGoal += 20f;
         Debug.Log("next wave");
     }
 

@@ -69,7 +69,7 @@ public class enemybasescript : MonoBehaviour
             if (collision.gameObject.tag == "Player")//will need to be an enemy tag if multiple enemies
             {
                 collision.gameObject.SendMessage("damageApply", attackout.SaveToString());
-                gameObject.SendMessage("damageApply", attackout.SaveToString());
+                //damageApply(attackout.SaveToString());
             }
         }
     }

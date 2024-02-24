@@ -164,9 +164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDir: {x: 0, y: 0, z: 0}
-  cooldown: 5
+  cooldown: 1
+  health: 3
   entitySpeed: 3
   bulletPrefab: {fileID: 2982562905542094413, guid: dc585292eafff1743ba597d7eabf05ca, type: 3}
+  dead: 0
 --- !u!1 &6099731655906644404
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +181,7 @@ GameObject:
   - component: {fileID: 5044204525480410319}
   m_Layer: 0
   m_Name: spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
