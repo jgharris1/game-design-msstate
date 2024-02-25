@@ -12,10 +12,13 @@ public class enemybasescript : MonoBehaviour
     public float immuneFrame = 0;
     private damageData attackin;
     private damageData attackout;
+    public float XP;
     public int damage;
+    public enemyData stats;
     // Start is called before the first frame update
     void Start()
     {
+        stats = new enemyData();
         attackout = new damageData();
         attackout.damage = damage;
         attackout.statusId = 0;
@@ -59,7 +62,11 @@ public class enemybasescript : MonoBehaviour
 
     public void setData(string data)
     {
-        entitySpeed = 1;
+        stats = JsonUtility.FromJson<enemyData>(data);
+        health = stats.HP;
+        entitySpeed = stats.speed;
+        XP = stats.XP;
+        gameObject.name = stats.name;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

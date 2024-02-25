@@ -171,9 +171,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1118732724707629097, guid: 556bd1a14153a5a479e2c186c8c184ca, type: 3}
+      propertyPath: m_TagString
+      value: PauseTillGone
+      objectReference: {fileID: 0}
     - target: {fileID: 4888207736547673525, guid: 556bd1a14153a5a479e2c186c8c184ca, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099731655906644404, guid: 556bd1a14153a5a479e2c186c8c184ca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
