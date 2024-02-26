@@ -1,0 +1,53 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace BulletHeaven
+{
+    public partial class HomeScreen : Form
+    {
+        private PictureBox backgroundPictureBox;
+        private Button startButton;
+
+        public HomeScreen()
+        {
+            InitializeComponent();
+            InitializeUI();
+        }
+
+        private void InitializeUI()
+        {
+            // Form setup
+            this.Text = "Bullet Heaven";
+            this.Size = new Size(800, 600); // Set your desired size
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+
+            // Background image setup
+            backgroundPictureBox = new PictureBox();
+            backgroundPictureBox.Image = Image.FromFile("background.jpg"); // Change "background.jpg" to your image file
+            backgroundPictureBox.Size = this.ClientSize;
+            backgroundPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.Controls.Add(backgroundPictureBox);
+
+            // Start button setup
+            startButton = new Button();
+            startButton.Text = "Press Start";
+            startButton.Size = new Size(100, 50);
+            startButton.Location = new Point((this.ClientSize.Width - startButton.Width) / 2, (this.ClientSize.Height - startButton.Height) / 2);
+            startButton.Click += StartButton_Click;
+            this.Controls.Add(startButton);
+        }
+
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            // Add functionality for starting the game
+            MessageBox.Show("Starting the game!");
+            // For example:
+            // GameForm gameForm = new GameForm();
+            // gameForm.Show();
+            // this.Hide();
+        }
+    }
+}
