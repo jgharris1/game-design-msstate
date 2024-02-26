@@ -23,25 +23,33 @@ public class wavewriter : MonoBehaviour
         enemy.HP = 1;
         enemy.speed = 0.9f;
         enemy.XP = 1f;
+        enemy.animFrames = 4;
+        enemy.frameRate = .3f;
         enemies[0] = enemy.SaveToString();
 
         enemy.name = "blackbird";
         enemy.HP = 7;
         enemy.speed = 0.8f;
         enemy.XP = 1f;
+        enemy.animFrames = 2;
+        enemy.frameRate = .3f;
         enemies[1] = enemy.SaveToString();
 
         enemy.name = "vulture";
         enemy.HP = 16;
         enemy.speed = 0.85f;
         enemy.XP = 1.2f;
+        enemy.animFrames = 1;
+        enemy.frameRate = .3f;
         enemies[2] = enemy.SaveToString();
 
-        enemy.name = "outlaw";
+        /*enemy.name = "outlaw";
         enemy.HP = 750;
         enemy.speed = 0.95f;
         enemy.XP = 500f;
-        enemies[3] = enemy.SaveToString();
+        enemy.animFrames = 1;
+        enemy.frameRate = .3f;
+        enemies[3] = enemy.SaveToString();*/
 
 
         //waves -------------------------------------------------------------------------------------

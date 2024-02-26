@@ -15,6 +15,13 @@ public class enemybasescript : MonoBehaviour
     public float XP;
     public int damage;
     public enemyData stats;
+
+    public int Frames;
+    public int Frame;
+    public float frameTimer;
+    public float frameRate;
+    public SpriteRenderer spriteRenderer;
+    public Sprite[] newSprites = new Sprite[4];
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +33,7 @@ public class enemybasescript : MonoBehaviour
         attackout.statusDur = 0;
         Playerdata = GameObject.FindWithTag("Player");
         targetDif = new Vector3(0.0f, 0.0f, 0.0f);
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -40,6 +48,14 @@ public class enemybasescript : MonoBehaviour
                 targetDif = Vector3.Normalize(targetDif);
             }
         }
+        if (frameTimer > frameRate)
+        {
+            frameTimer = 0f;
+            Frame += 1;
+            Frame %= Frames;
+            spriteRenderer.sprite = newSprites[Frame];
+        }
+        frameTimer += Time.deltaTime;
         transform.position = transform.position + (targetDif * entitySpeed) * Time.deltaTime;
     }
 
@@ -67,6 +83,13 @@ public class enemybasescript : MonoBehaviour
         entitySpeed = stats.speed;
         XP = stats.XP;
         gameObject.name = stats.name;
+        string linkBase = stats.name + "/frame-";
+        for (int i = 0; i < stats.animFrames; i++)
+        {
+            newSprites[i] = Resources.Load<Sprite>(linkBase + (i + 1));
+        }
+        Frames = stats.animFrames;
+        frameRate = stats.frameRate;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -76,7 +99,7 @@ public class enemybasescript : MonoBehaviour
             if (collision.gameObject.tag == "Player")//will need to be an enemy tag if multiple enemies
             {
                 collision.gameObject.SendMessage("damageApply", attackout.SaveToString());
-                //damageApply(attackout.SaveToString());
+                damageApply(attackout.SaveToString());
             }
         }
     }

@@ -8,6 +8,8 @@ public class enemyData
     public int HP;
     public float speed;
     public float XP;
+    public int animFrames;
+    public float frameRate;
 
     public string SaveToString()
     {
