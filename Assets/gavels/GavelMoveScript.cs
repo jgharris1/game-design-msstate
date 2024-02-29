@@ -7,6 +7,7 @@ public class GavelMoveScript : MonoBehaviour
     public entitybasebehavior Selfdata;
     public Vector3 gavelDir;
     public float speed;
+    public float fallSpeed;
     public GameObject player;//necessary to get direction
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,17 @@ public class GavelMoveScript : MonoBehaviour
             Destroy(gameObject);
         }
 
+        fallSpeed += 0.02f;
         Selfdata.targetPos.Set((transform.position.x + gavelDir.x) * speed, (transform.position.y + gavelDir.y) * speed, 0);
+        Selfdata.targetPos.Set((transform.position.y - 150.0f) * fallSpeed, transform.position.y, 0);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Enemy")//will need to be an enemy tag if multiple enemies
+        {
+            //uncomment the below when enemy damage exists
+            //damageApply(enemygameobject, damage, statusId, statusLevel, duration);
+        }
     }
 }
