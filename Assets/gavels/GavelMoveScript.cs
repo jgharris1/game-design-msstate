@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class GavelMoveScript : MonoBehaviour
 {
-    public entitybasebehavior Selfdata;
     public Vector3 gavelDir;
     public float speed;
     public float fallSpeed;
+    private Vector3 down;
     public GameObject player;//necessary to get direction
     // Start is called before the first frame update
     void Start()
     {
+        down = new Vector3(0, -1, 0);
         gavelDir = player.GetComponent<Vector3>();//GetComponent is janky and if there is another Vector3 added to PlayerBaseScript, more specificity will be needed
-        
+        gavelDir = Vector3.Normalize(gavelDir);
+
         if (gavelDir.x == 0.0f)
         {
-            gavelDir.x += Random.Range(-10.0f, 10.0f);
+            gavelDir.x += Random.Range(-.222f, .222f);// after normalizing to 1.0, .222 approximates 10 degrees
         }
 
         if (gavelDir.y == 0.0f)
         {
-            gavelDir.y += Random.Range(-10.0f, 10.0f);
+            gavelDir.y += Random.Range(-.222f, .222f);
         }
     }
 
@@ -34,13 +36,12 @@ public class GavelMoveScript : MonoBehaviour
         }
 
         fallSpeed += 0.02f;
-        Selfdata.targetPos.Set((transform.position.x + gavelDir.x) * speed, (transform.position.y + gavelDir.y) * speed, 0);
-        Selfdata.targetPos.Set((transform.position.y - 150.0f) * fallSpeed, transform.position.y, 0);
+        transform.position = transform.position + (gavelDir * speed * Time.deltaTime) + (down * fallSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Enemy")//will need to be an enemy tag if multiple enemies
+        if (collision.gameObject.tag == "Enemy")//will need to be an enemy tag if multiple enemies
         {
             //uncomment the below when enemy damage exists
             //damageApply(enemygameobject, damage, statusId, statusLevel, duration);

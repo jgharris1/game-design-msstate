@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BuckshotScript : MonoBehaviour
 {
-    public entitybasebehavior Selfdata;
     public Vector3 buckshotDir;
     public float speed;
     public float startPosOffset;
@@ -23,6 +22,8 @@ public class BuckshotScript : MonoBehaviour
         {
             buckshotDir.y += startPosOffset;
         }
+
+        buckshotDir = Vector3.Normalize(buckshotDir);
     }
 
     // Update is called once per frame
@@ -33,11 +34,11 @@ public class BuckshotScript : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Selfdata.targetPos.Set((transform.position.x + buckshotDir.x) * speed, (transform.position.y + buckshotDir.y) * speed, 0);
+        transform.position = transform.position + (buckshotDir * speed * Time.deltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Enemy")//will need to be an enemy tag if multiple enemies
+        if (collision.gameObject.tag == "Enemy")//will need to be an enemy tag if multiple enemies
         {
             //uncomment the below when enemy damage exists
             //damageApply(enemygameobject, damage, statusId, statusLevel, duration);

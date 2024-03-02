@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WhipScript : MonoBehaviour
 {
-    public entitybasebehavior Selfdata;
     public Vector3 whipDir;
     public GameObject player;
     private float timer = 0.0f;
@@ -12,6 +11,7 @@ public class WhipScript : MonoBehaviour
     void Start()
     {
         whipDir = player.GetComponent<Vector3>();
+        whipDir = Vector3.Normalize(whipDir);
     }
 
     // Update is called once per frame
@@ -23,10 +23,12 @@ public class WhipScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        transform.position = player.transform.position;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Enemy")//will need to be an enemy tag if multiple enemies
+        if (collision.gameObject.tag == "Enemy")//will need to be an enemy tag if multiple enemies
         {
             //uncomment the below when enemy damage exists
             //damageApply(enemygameobject, damage, statusId, statusLevel, duration);
