@@ -121,7 +121,7 @@ public class PlayerBaseScript : MonoBehaviour
                 if (timers[i].timer >= timers[i].cooldown)
                 {
                     timers[i].timer -= timers[i].cooldown;
-                    //guns[i].attack();
+                    guns[i].SendMessage("attack");
                 }
             }
         }
