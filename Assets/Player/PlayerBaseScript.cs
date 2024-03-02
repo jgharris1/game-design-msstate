@@ -33,6 +33,8 @@ public class PlayerBaseScript : MonoBehaviour
         //}
         playerDir = new Vector3(0.0f, 0.0f, 0.0f);
         GetComponent<Rigidbody2D>().freezeRotation = true;
+        timers[2].cooldown = 1.0f;
+        timers[2].have = true;
     }
 
     // Update is called once per frame
