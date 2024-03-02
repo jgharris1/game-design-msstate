@@ -72,6 +72,7 @@ public class enemybasescript : MonoBehaviour
         health -= attackin.damage;
         if (health <= 0)
         {
+            Playerdata.SendMessage("addEXP", XP);
             Destroy(gameObject);
         }
     }

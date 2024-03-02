@@ -68,18 +68,21 @@ public class spawnerscript : MonoBehaviour
 
     public void spawnEnemy()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length < spawnLimit)
+        for (int i = 0; i < Random.Range(1, spawnLimit / 2); i ++)
         {
-            spawnTimer = spawnRate;
-            dirVec.Set(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
-            dirVec = Vector3.Normalize(dirVec);
-            randCheck = 0;
-            if (Random.Range(0f, 1f) > ratio)
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length < spawnLimit)
             {
-                randCheck = 1;
+                spawnTimer = spawnRate;
+                dirVec.Set(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
+                dirVec = Vector3.Normalize(dirVec);
+                randCheck = 0;
+                if (Random.Range(0f, 1f) > ratio)
+                {
+                    randCheck = 1;
+                }
+                enemy = Instantiate(enemyPrefab, transform.parent.position + (dirVec * Random.Range(spawnDistMin, spawnDistMax)), transform.parent.rotation);
+                enemy.SendMessage("setData", enemies[randCheck]);
             }
-            enemy = Instantiate(enemyPrefab, transform.parent.position + (dirVec * Random.Range(spawnDistMin, spawnDistMax)), transform.parent.rotation);
-            enemy.SendMessage("setData", enemies[randCheck]);
         }
     }
 

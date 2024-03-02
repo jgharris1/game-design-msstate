@@ -51,7 +51,7 @@ MonoBehaviour:
   speed: 2
   range: 10
   pierce: 0
-  damage: 3
+  damage: 5
   statusId: 0
   statusLevel: 0
   statusDur: 0
