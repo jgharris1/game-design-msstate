@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7236007601864532738}
   - component: {fileID: 3015584418596932501}
   - component: {fileID: 5798131811322762065}
+  - component: {fileID: 2873493760286919849}
   m_Layer: 0
   m_Name: IntimidatingAura
   m_TagString: Untagged
@@ -80,5 +81,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65296a9e49bd5934db3d628debef0506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Selfdata: {fileID: 0}
+  Selfdata: {fileID: 2873493760286919849}
   player: {fileID: 4888207736547673525, guid: 556bd1a14153a5a479e2c186c8c184ca, type: 3}
+--- !u!114 &2873493760286919849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112832026130797711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76bc51f1c023f474abf3bcd29aab2ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPos: {x: 0, y: 0, z: 0}
+  targetDif: {x: 0, y: 0, z: 0}
+  entitySpeed: 0
