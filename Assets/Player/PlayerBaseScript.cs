@@ -17,6 +17,13 @@ public class PlayerBaseScript : MonoBehaviour
 
     private GameObject[] guns = new GameObject[8];
     public timerdata[] timers = new timerdata[8];
+    
+    public Vector3 scale;
+    public int Frame;
+    public float frameTimer;
+    public float frameRate;
+    public SpriteRenderer spriteRenderer;
+    public Sprite[] newSprites = new Sprite[4];
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +40,17 @@ public class PlayerBaseScript : MonoBehaviour
         //}
         playerDir = new Vector3(0.0f, 0.0f, 0.0f);
         GetComponent<Rigidbody2D>().freezeRotation = true;
+<<<<<<< Updated upstream
+=======
+
+        scale = transform.localScale;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        string linkBase = "player/frame-";
+        for (int i = 0; i < 4; i++)
+        {
+            newSprites[i] = Resources.Load<Sprite>(linkBase + (i + 1));
+        }
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -61,6 +79,24 @@ public class PlayerBaseScript : MonoBehaviour
             //Selfdata.targetPos.Set(transform.position.x + playerDir.x, transform.position.y + playerDir.y, 0);
             if ((Mathf.Abs(playerDir.x) + Mathf.Abs(playerDir.y)) != 0)
             {
+                if (frameTimer > frameRate)
+                {
+                    frameTimer = 0f;
+                    Frame += 1;
+                    Frame %= 2;
+                    spriteRenderer.sprite = newSprites[Frame];
+                }
+                frameTimer += Time.deltaTime;
+                
+                if (playerDir.x < 0)
+                {
+                    scale.x = -3;
+                }
+                else
+                {
+                    scale.x = 3;
+                }
+                transform.localScale = scale;
                 playerDir = Vector3.Normalize(playerDir);
                 transform.position = transform.position + (playerDir * entitySpeed) * Time.deltaTime;
             }
@@ -121,7 +157,11 @@ public class PlayerBaseScript : MonoBehaviour
                 if (timers[i].timer >= timers[i].cooldown)
                 {
                     timers[i].timer -= timers[i].cooldown;
+<<<<<<< Updated upstream
                     //guns[i].attack();
+=======
+                    //guns[i].SendMessage("attack");
+>>>>>>> Stashed changes
                 }
             }
         }
