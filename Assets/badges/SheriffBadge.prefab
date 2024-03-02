@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Selfdata: {fileID: 1586806799239585021}
-  gavelDir: {x: 0, y: 0, z: 0}
+  badgeDir: {x: 0, y: 0, z: 0}
   speed: 0
+  startPosOffset: 0
   player: {fileID: 4888207736547673525, guid: 556bd1a14153a5a479e2c186c8c184ca, type: 3}
