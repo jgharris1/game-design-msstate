@@ -8,15 +8,13 @@ public class PlayerBaseScript : MonoBehaviour
     public Vector3 playerDir;
     public int health;
     public float entitySpeed;
-    public GameObject bulletPrefab;
-    GameObject bullet;
     public damageData attack;
     public bool dead;
     public float experience = 10.0f;
     public float xpgoal = 0.0f;
 
     private GameObject[] guns = new GameObject[8];
-    public timerdata[] timers = new timerdata[8];
+    public timerdata[] timers = new timerdata[7];
     
     public Vector3 scale;
     public int Frame;
@@ -27,22 +25,27 @@ public class PlayerBaseScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 7; i++)
         {
             timers[i] = new timerdata();
             timers[i].cooldown = 0.0f;
             timers[i].timer = 0.0f; 
             timers[i].have = false;
         }
-        //for (int i = 0; i < 8; i++)
-        //{
-            //guns[i] = FindGameObjectWithTag("gun" + i)
-        //}
+        for (int i = 0; i < 8; i++)
+        {
+            guns[i] = GameObject.FindGameObjectWithTag("gun" + i);
+            guns[i].SetActive(false);
+        }
+
+        //delete later vv
+        timers[0].have = true;
+        timers[0].cooldown = 0.5f;
+        guns[0].SetActive(true);
+        guns[7].SetActive(true);
+        // delete later^^
         playerDir = new Vector3(0.0f, 0.0f, 0.0f);
         GetComponent<Rigidbody2D>().freezeRotation = true;
-<<<<<<< Updated upstream
-=======
-
         scale = transform.localScale;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         string linkBase = "player/frame-";
@@ -50,7 +53,6 @@ public class PlayerBaseScript : MonoBehaviour
         {
             newSprites[i] = Resources.Load<Sprite>(linkBase + (i + 1));
         }
->>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -149,7 +151,7 @@ public class PlayerBaseScript : MonoBehaviour
 
     private void updateTimers()
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 7; i++)
         {
             if (timers[i].have)
             {
@@ -157,11 +159,7 @@ public class PlayerBaseScript : MonoBehaviour
                 if (timers[i].timer >= timers[i].cooldown)
                 {
                     timers[i].timer -= timers[i].cooldown;
-<<<<<<< Updated upstream
-                    //guns[i].attack();
-=======
-                    //guns[i].SendMessage("attack");
->>>>>>> Stashed changes
+                    guns[i].SendMessage("Attack");
                 }
             }
         }
