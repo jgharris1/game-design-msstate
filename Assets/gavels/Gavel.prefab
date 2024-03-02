@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4465987038143179846}
   - component: {fileID: 6926432863162617619}
-  - component: {fileID: 3318992998605504727}
   - component: {fileID: 4102389895090361094}
   m_Layer: 0
   m_Name: Gavel
@@ -87,21 +86,6 @@ PolygonCollider2D:
       - {x: 1, y: 0.4}
       - {x: 1, y: 1}
   m_UseDelaunayMesh: 0
---- !u!114 &3318992998605504727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8892330236126597703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76bc51f1c023f474abf3bcd29aab2ee1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPos: {x: 0, y: 0, z: 0}
-  targetDif: {x: 0, y: 0, z: 0}
-  entitySpeed: 0
 --- !u!114 &4102389895090361094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3837c0496e8a2214aa682db09e6e5445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Selfdata: {fileID: 3318992998605504727}
   gavelDir: {x: 0, y: 0, z: 0}
   speed: 0
   fallSpeed: 0

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2855020182309017370}
   - component: {fileID: 4102656825131311666}
-  - component: {fileID: 1586806799239585021}
   - component: {fileID: 3420276777747103093}
   m_Layer: 0
   m_Name: SheriffBadge
@@ -69,21 +68,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &1586806799239585021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7641621698995403769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76bc51f1c023f474abf3bcd29aab2ee1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPos: {x: 0, y: 0, z: 0}
-  targetDif: {x: 0, y: 0, z: 0}
-  entitySpeed: 0
 --- !u!114 &3420276777747103093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +80,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2a41f7588438f4daa6c959051f8991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Selfdata: {fileID: 1586806799239585021}
   badgeDir: {x: 0, y: 0, z: 0}
   speed: 0
   startPosOffset: 0

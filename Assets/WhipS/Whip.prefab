@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5509816641052733641}
   - component: {fileID: 3338216758801807978}
-  - component: {fileID: 7045787650872505280}
   - component: {fileID: 9089794624001107400}
   m_Layer: 0
   m_Name: Whip
@@ -82,21 +81,6 @@ PolygonCollider2D:
       - {x: -0.25, y: -1}
       - {x: 0.25, y: -1}
   m_UseDelaunayMesh: 0
---- !u!114 &7045787650872505280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3188048754964258836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76bc51f1c023f474abf3bcd29aab2ee1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPos: {x: 0, y: 0, z: 0}
-  targetDif: {x: 0, y: 0, z: 0}
-  entitySpeed: 0
 --- !u!114 &9089794624001107400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +93,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5450a3770a4e4c47b524016d5330b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Selfdata: {fileID: 7045787650872505280}
   whipDir: {x: 0, y: 0, z: 0}
   player: {fileID: 4888207736547673525, guid: 556bd1a14153a5a479e2c186c8c184ca, type: 3}
