@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class wormp_script : MonoBehaviour
 {
-    public GameObject Playerdata;
+    public GameObject Followdata;
     public worm_data_script Selfdata;
     public Vector3 targetDif;
     public Vector3 targetPos;
@@ -21,19 +21,25 @@ public class wormp_script : MonoBehaviour
         }
         if (head)
         {
-            Playerdata = GameObject.FindWithTag("Player");
+            Followdata = GameObject.FindWithTag("Player");
         }
         else
         {
-            Playerdata = transform.parent.GetChild(transform.GetSiblingIndex() - 1).gameObject;
+            Followdata = transform.parent.GetChild(transform.GetSiblingIndex() - 1).gameObject;
         }
-
+        foreach (Transform child in transform.parent)
+        {
+            if (child.GetSiblingIndex() != transform.GetSiblingIndex())
+            {
+                Physics2D.IgnoreCollision(child.GetComponent<Collider2D>(), transform.GetComponent<Collider2D>());
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        targetDif.Set(Playerdata.transform.position.x - transform.position.x, Playerdata.transform.position.y - transform.position.y, 0);
+        targetDif.Set(Followdata.transform.position.x - transform.position.x, Followdata.transform.position.y - transform.position.y, 0);
         if ((Mathf.Abs(targetDif.x) + Mathf.Abs(targetDif.y)) != 0)
         {
             targetDif = Vector3.Normalize(targetDif);
@@ -44,7 +50,12 @@ public class wormp_script : MonoBehaviour
         }
         else
         {
-            transform.position = Playerdata.transform.position - targetDif * Selfdata.segDist;
+            transform.position = Followdata.transform.position - targetDif * Selfdata.segDist;
         }
+    }
+
+    public void damageApply(string attack)//, int statusId = 0, int statusLevel = 0, float duration = 0)
+    {
+        Selfdata.damageApply(attack);
     }
 }
