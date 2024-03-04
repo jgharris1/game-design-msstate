@@ -8,6 +8,14 @@ TagManager:
   - Bullet
   - Spawner
   - PauseTillGone
+  - gun0
+  - gun7
+  - gun1
+  - gun2
+  - gun3
+  - gun4
+  - gun5
+  - gun6
   layers:
   - Default
   - TransparentFX
