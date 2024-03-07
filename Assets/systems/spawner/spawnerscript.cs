@@ -28,6 +28,7 @@ public class spawnerscript : MonoBehaviour
     public int enemycnt;
     public wavesListData wavesList;
     public waveData wave;
+    public bool pause;
 
     public bool potshot;
     // Start is called before the first frame update
@@ -48,7 +49,10 @@ public class spawnerscript : MonoBehaviour
     {
         enemycnt = GameObject.FindGameObjectsWithTag("Enemy").Length;
         parentLoc = transform.parent.transform.position;
-        waveTimer += Time.deltaTime;
+        if (!pause)
+        {
+            waveTimer += Time.deltaTime;
+        }
         spawnTimer -= Time.deltaTime;
         if (potshot)
         {

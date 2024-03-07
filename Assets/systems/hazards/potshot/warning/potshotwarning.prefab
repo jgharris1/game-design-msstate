@@ -152,15 +152,15 @@ MonoBehaviour:
   timer: 0
   line: {fileID: 0}
   maxalpha: 0.5
-  spawntime: 5
+  spawntime: 2
   curalpha: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   points:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   dirVec: {x: 0, y: 0, z: 0}
-  spawnDistMin: 10
-  spawnDistMax: 15
+  spawnDistMin: 20
+  spawnDistMax: 30
   in_out: 1
   shotPrefab: {fileID: 6163852058056445615, guid: c097f8d80746cfc44a00c3c59189250e, type: 3}
   shot: {fileID: 0}
