@@ -8,9 +8,12 @@ public class spawnerscript : MonoBehaviour
     public float spawnDistMax;
     public float spawnTimer;
     public float waveTimer;
+    public float hazardTimer;
+    public float hazardRate;
     public Vector3 parentLoc;
     public Vector3 dirVec;
     public GameObject enemyPrefab;
+    public GameObject potshotPrefab;
     GameObject enemy;
     public int randCheck;
 
@@ -22,8 +25,11 @@ public class spawnerscript : MonoBehaviour
     public float ratio;
     public string hazard;
 
+    public int enemycnt;
     public wavesListData wavesList;
     public waveData wave;
+
+    public bool potshot;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,9 +46,19 @@ public class spawnerscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        enemycnt = GameObject.FindGameObjectsWithTag("Enemy").Length;
         parentLoc = transform.parent.transform.position;
         waveTimer += Time.deltaTime;
         spawnTimer -= Time.deltaTime;
+        if (potshot)
+        {
+            hazardTimer += Time.deltaTime;
+            if (hazardTimer >= hazardRate)
+            {
+                PotShot();
+                hazardTimer = 0f;
+            }
+        }
         if (waveTimer > waveGoal)
         {
             nextWave();
@@ -55,6 +71,7 @@ public class spawnerscript : MonoBehaviour
 
     public void nextWave()
     {
+        hazardDisable();
         wave = JsonUtility.FromJson<waveData>(wavesList.waves[waveid]);
         waveGoal = wave.timeGoal;
         spawnLimit = wave.mobCap;
@@ -63,7 +80,13 @@ public class spawnerscript : MonoBehaviour
         hazard = wave.hazard;
         enemies = wave.enemies;
         waveid += 1;
-        Debug.Log("next wave");
+        if (hazard.Length > 0)
+        {
+            if (hazard == "potshot")
+            {
+                potshot = true;
+            }
+        }
     }
 
     public void spawnEnemy()
@@ -92,5 +115,16 @@ public class spawnerscript : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    public void hazardDisable()
+    {
+        potshot = false;
+    }
+
+    public void PotShot()
+    {
+        
+        Instantiate(potshotPrefab);
     }
 }

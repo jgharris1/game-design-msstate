@@ -13,7 +13,7 @@ public class wavewriter : MonoBehaviour
 
     public GameObject playerPrefab;
     GameObject player;
-    public string[] enemies = new string[7];
+    public string[] enemies = new string[6];
 
 
     // Start is called before the first frame update
@@ -45,8 +45,32 @@ public class wavewriter : MonoBehaviour
         enemy.frameRate = .3f;
         enemies[2] = enemy.SaveToString();
 
+        enemy.name = "coyote";
+        enemy.HP = 24;
+        enemy.speed = 0.85f;
+        enemy.XP = 1.2f;
+        enemy.animFrames = 2;
+        enemy.frameRate = .3f;
+        enemies[3] = enemy.SaveToString();
+
+        enemy.name = "wolf";
+        enemy.HP = 30;
+        enemy.speed = 0.9f;
+        enemy.XP = 1.3f;
+        enemy.animFrames = 2;
+        enemy.frameRate = .3f;
+        enemies[4] = enemy.SaveToString();
+
+        enemy.name = "blackwolf";
+        enemy.HP = 40;
+        enemy.speed = 0.9f;
+        enemy.XP = 1.5f;
+        enemy.animFrames = 2;
+        enemy.frameRate = .3f;
+        enemies[5] = enemy.SaveToString();
+
         /*enemy.name = "outlaw";
-        enemy.HP = 750;
+        enemy.HP = 300;
         enemy.speed = 0.95f;
         enemy.XP = 500f;
         enemy.animFrames = 1;
@@ -129,6 +153,76 @@ public class wavewriter : MonoBehaviour
         wave.hazard = "boss1";
 
         wavesList.waves[6] = wave.SaveToString();
+
+        wave.timeGoal = 390;
+        wave.enemies[0] = enemies[2];
+        wave.enemies[1] = enemies[3];
+        wave.ratio = .33333f;
+        wave.mobCap = 25;
+        wave.spawnRate = 2.5f;
+        wave.hazard = "";
+
+        wavesList.waves[7] = wave.SaveToString();
+
+        wave.timeGoal = 420;
+        wave.enemies[0] = enemies[3];
+        wave.enemies[1] = "";
+        wave.ratio = 1f;
+        wave.mobCap = 25;
+        wave.spawnRate = 2.5f;
+        wave.hazard = "";
+
+        wavesList.waves[8] = wave.SaveToString();
+
+        wave.timeGoal = 480;
+        wave.enemies[0] = enemies[3];
+        wave.enemies[1] = enemies[4];
+        wave.ratio = .33333f;
+        wave.mobCap = 25;
+        wave.spawnRate = 3f;
+        wave.hazard = "";
+
+        wavesList.waves[9] = wave.SaveToString();
+
+        wave.timeGoal = 510;
+        wave.enemies[0] = enemies[4];
+        wave.enemies[1] = enemies[5];
+        wave.ratio = .66666f;
+        wave.mobCap = 25;
+        wave.spawnRate = 2.5f;
+        wave.hazard = "";
+
+        wavesList.waves[10] = wave.SaveToString();
+
+        wave.timeGoal = 540;
+        wave.enemies[0] = enemies[4];
+        wave.enemies[1] = enemies[5];
+        wave.ratio = .25f;
+        wave.mobCap = 25;
+        wave.spawnRate = 2.5f;
+        wave.hazard = "";
+
+        wavesList.waves[11] = wave.SaveToString();
+
+        wave.timeGoal = 600;
+        wave.enemies[0] = enemies[5];
+        wave.enemies[1] = "";
+        wave.ratio = 1f;
+        wave.mobCap = 30;
+        wave.spawnRate = 2.5f;
+        wave.hazard = "mad_howls";
+
+        wavesList.waves[12] = wave.SaveToString();
+
+        wave.timeGoal = 750;
+        wave.enemies[0] = enemies[5];
+        wave.enemies[1] = "";
+        wave.ratio = 1f;
+        wave.mobCap = 20;
+        wave.spawnRate = 3f;
+        wave.hazard = "boss2";
+
+        wavesList.waves[13] = wave.SaveToString();
 
         //Debug.Log(wavesList.SaveToString());
 

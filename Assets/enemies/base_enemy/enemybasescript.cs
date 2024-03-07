@@ -15,6 +15,7 @@ public class enemybasescript : MonoBehaviour
     public float XP;
     public int damage;
     public enemyData stats;
+    public Vector3 scale;
 
     public int Frames;
     public int Frame;
@@ -34,6 +35,7 @@ public class enemybasescript : MonoBehaviour
         Playerdata = GameObject.FindWithTag("Player");
         targetDif = new Vector3(0.0f, 0.0f, 0.0f);
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        scale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -56,6 +58,15 @@ public class enemybasescript : MonoBehaviour
             spriteRenderer.sprite = newSprites[Frame];
         }
         frameTimer += Time.deltaTime;
+        if (targetDif.x < 0)
+        {
+            scale.x = 5;
+        }
+        else
+        {
+            scale.x = -5;
+        }
+        transform.localScale = scale;
         transform.position = transform.position + (targetDif * entitySpeed) * Time.deltaTime;
     }
 
