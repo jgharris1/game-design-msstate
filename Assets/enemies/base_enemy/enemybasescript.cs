@@ -15,6 +15,7 @@ public class enemybasescript : MonoBehaviour
     public float XP;
     public int damage;
     public enemyData stats;
+    public Vector3 scale;
 
     public int Frames;
     public int Frame;
@@ -22,6 +23,7 @@ public class enemybasescript : MonoBehaviour
     public float frameRate;
     public SpriteRenderer spriteRenderer;
     public Sprite[] newSprites = new Sprite[4];
+    public float range = 16f;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +36,16 @@ public class enemybasescript : MonoBehaviour
         Playerdata = GameObject.FindWithTag("Player");
         targetDif = new Vector3(0.0f, 0.0f, 0.0f);
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        scale = transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Vector3.Distance(Playerdata.transform.position, transform.position) > range)//100 is arbitrary, just has to be offscreen
+        {
+            Destroy(gameObject);
+        }
         immuneFrame -= Time.deltaTime;
         if (!lineFollow)
         {
@@ -56,6 +63,15 @@ public class enemybasescript : MonoBehaviour
             spriteRenderer.sprite = newSprites[Frame];
         }
         frameTimer += Time.deltaTime;
+        if (targetDif.x < 0)
+        {
+            scale.x = 5;
+        }
+        else
+        {
+            scale.x = -5;
+        }
+        transform.localScale = scale;
         transform.position = transform.position + (targetDif * entitySpeed) * Time.deltaTime;
     }
 

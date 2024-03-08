@@ -7,24 +7,28 @@ public class PlayerBaseScript : MonoBehaviour
 
     public Vector3 playerDir;
     public int health;
-    public float entitySpeed;
-    public damageData attack;
-    public bool dead;
+    private float entitySpeed = 3;
+    private float entitySpeedBackup;
+    private damageData attack;
+    private bool dead;
     public float experience = 10.0f;
     public float xpgoal = 0.0f;
+    private bool mad_howl_effect;
+    private float mad_howl_timer;
 
     private GameObject[] guns = new GameObject[8];
-    public timerdata[] timers = new timerdata[7];
+    private timerdata[] timers = new timerdata[7];
     
-    public Vector3 scale;
-    public int Frame;
-    public float frameTimer;
+    private Vector3 scale;
+    private int Frame;
+    private float frameTimer;
     public float frameRate;
-    public SpriteRenderer spriteRenderer;
-    public Sprite[] newSprites = new Sprite[4];
+    private SpriteRenderer spriteRenderer;
+    private Sprite[] newSprites = new Sprite[4];
     // Start is called before the first frame update
     void Start()
     {
+        entitySpeedBackup = entitySpeed;
         for (int i = 0; i < 7; i++)
         {
             timers[i] = new timerdata();
@@ -79,6 +83,15 @@ public class PlayerBaseScript : MonoBehaviour
                 playerDir.Set(playerDir.x + 1, playerDir.y, 0);
             }
             //Selfdata.targetPos.Set(transform.position.x + playerDir.x, transform.position.y + playerDir.y, 0);
+            if (mad_howl_effect)
+            {
+                mad_howl_timer -= Time.deltaTime;
+                if (mad_howl_timer < 0)
+                {
+                    mad_howl_effect = false;
+                    entitySpeed = entitySpeedBackup;
+                }
+            }
             if ((Mathf.Abs(playerDir.x) + Mathf.Abs(playerDir.y)) != 0)
             {
                 if (frameTimer > frameRate)
@@ -163,5 +176,12 @@ public class PlayerBaseScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void mad_howl()
+    {
+        mad_howl_effect = true;
+        mad_howl_timer = 5.0f;
+        entitySpeed = entitySpeed * 0.95f;
     }
 }

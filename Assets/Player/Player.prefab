@@ -83,8 +83,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1074393991
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5de33e236bf6ee04ba0a82359f72224e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -174,9 +174,12 @@ MonoBehaviour:
   playerDir: {x: 0, y: 0, z: 0}
   health: 3
   entitySpeed: 3
+  entitySpeedBackup: 0
   dead: 0
   experience: 10
   xpgoal: 0
+  mad_howl_effect: 0
+  mad_howl_timer: 0
   scale: {x: 0, y: 0, z: 0}
   Frame: 0
   frameTimer: 0
@@ -235,9 +238,12 @@ MonoBehaviour:
   spawnDistMax: 15
   spawnTimer: 0
   waveTimer: 0
+  hazardTimer: 0
+  hazardRate: 5
   parentLoc: {x: 0, y: 0, z: 0}
   dirVec: {x: 0, y: 0, z: 0}
   enemyPrefab: {fileID: 2003824432490548672, guid: c2910fb6b1c28e24f9e8501b622887fa, type: 3}
+  potshotPrefab: {fileID: 977006039692646235, guid: 61093fca2420b0540bd680d45398afaa, type: 3}
   randCheck: 0
   waveid: 0
   spawnLimit: 5
@@ -248,6 +254,9 @@ MonoBehaviour:
   - 
   ratio: 0
   hazard: 
+  enemycnt: 0
+  pause: 0
+  potshot: 0
 --- !u!1 &6779002174486586102
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +300,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.7607843, g: 0.69803923, b: 0.5019608, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -390,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8220584797982132058, guid: 90229a674f7b4434fbc8e9e64525944a, type: 3}
       propertyPath: m_Name
-      value: gun1
+      value: gun1(shotgun)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -834,6 +843,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 3015584418596932501, guid: fb4cd5c90d7cfe340a7a12ac01e39bef, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5798131811322762065, guid: fb4cd5c90d7cfe340a7a12ac01e39bef, type: 3}
       propertyPath: player
       value: 
@@ -913,7 +926,7 @@ Halo:
   m_Enabled: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4281414043
+    rgba: 4294967040
   m_Size: 2
 --- !u!4 &1978974188905958128 stripped
 Transform:
