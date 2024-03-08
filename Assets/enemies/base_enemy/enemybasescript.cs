@@ -23,6 +23,7 @@ public class enemybasescript : MonoBehaviour
     public float frameRate;
     public SpriteRenderer spriteRenderer;
     public Sprite[] newSprites = new Sprite[4];
+    public float range = 16f;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +42,10 @@ public class enemybasescript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Vector3.Distance(Playerdata.transform.position, transform.position) > range)//100 is arbitrary, just has to be offscreen
+        {
+            Destroy(gameObject);
+        }
         immuneFrame -= Time.deltaTime;
         if (!lineFollow)
         {

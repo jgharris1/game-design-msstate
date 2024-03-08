@@ -7,24 +7,24 @@ public class PlayerBaseScript : MonoBehaviour
 
     public Vector3 playerDir;
     public int health;
-    public float entitySpeed;
-    public float entitySpeedBackup;
-    public damageData attack;
-    public bool dead;
+    private float entitySpeed = 3;
+    private float entitySpeedBackup;
+    private damageData attack;
+    private bool dead;
     public float experience = 10.0f;
     public float xpgoal = 0.0f;
-    public bool mad_howl_effect;
-    public float mad_howl_timer;
+    private bool mad_howl_effect;
+    private float mad_howl_timer;
 
     private GameObject[] guns = new GameObject[8];
-    public timerdata[] timers = new timerdata[7];
+    private timerdata[] timers = new timerdata[7];
     
-    public Vector3 scale;
-    public int Frame;
-    public float frameTimer;
+    private Vector3 scale;
+    private int Frame;
+    private float frameTimer;
     public float frameRate;
-    public SpriteRenderer spriteRenderer;
-    public Sprite[] newSprites = new Sprite[4];
+    private SpriteRenderer spriteRenderer;
+    private Sprite[] newSprites = new Sprite[4];
     // Start is called before the first frame update
     void Start()
     {

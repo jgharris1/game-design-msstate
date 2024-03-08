@@ -88,7 +88,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[0];
         wave.enemies[1] = "";
         wave.ratio = 1f;
-        wave.mobCap = 15;
+        wave.mobCap = 30;
         wave.spawnRate = 3f;
         wave.hazard = "";
 
@@ -98,7 +98,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[0];
         wave.enemies[1] = enemies[1];
         wave.ratio = .5f;
-        wave.mobCap = 18;
+        wave.mobCap = 36;
         wave.spawnRate = 3f;
         wave.hazard = "";
 
@@ -108,7 +108,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[1];
         wave.enemies[1] = "";
         wave.ratio = 1f;
-        wave.mobCap = 20;
+        wave.mobCap = 40;
         wave.spawnRate = 2f;
         wave.hazard = "";
 
@@ -118,7 +118,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[1];
         wave.enemies[1] = enemies[2];
         wave.ratio = .6666f;
-        wave.mobCap = 22;
+        wave.mobCap = 44;
         wave.spawnRate = 3f;
         wave.hazard = "";
 
@@ -128,7 +128,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[2];
         wave.enemies[1] = "";
         wave.ratio = 1f;
-        wave.mobCap = 20;
+        wave.mobCap = 40;
         wave.spawnRate = 2.5f;
         wave.hazard = "";
 
@@ -138,7 +138,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[2];
         wave.enemies[1] = "";
         wave.ratio = 1f;
-        wave.mobCap = 22;
+        wave.mobCap = 44;
         wave.spawnRate = 2.5f;
         wave.hazard = "potshot";
 
@@ -148,7 +148,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[0];
         wave.enemies[1] = "";
         wave.ratio = 1f;
-        wave.mobCap = 15;
+        wave.mobCap = 30;
         wave.spawnRate = 3f;
         wave.hazard = "boss1";
 
@@ -158,7 +158,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[2];
         wave.enemies[1] = enemies[3];
         wave.ratio = .33333f;
-        wave.mobCap = 25;
+        wave.mobCap = 50;
         wave.spawnRate = 2.5f;
         wave.hazard = "";
 
@@ -168,7 +168,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[3];
         wave.enemies[1] = "";
         wave.ratio = 1f;
-        wave.mobCap = 25;
+        wave.mobCap = 50;
         wave.spawnRate = 2.5f;
         wave.hazard = "";
 
@@ -178,7 +178,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[3];
         wave.enemies[1] = enemies[4];
         wave.ratio = .33333f;
-        wave.mobCap = 25;
+        wave.mobCap = 50;
         wave.spawnRate = 3f;
         wave.hazard = "";
 
@@ -188,7 +188,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[4];
         wave.enemies[1] = enemies[5];
         wave.ratio = .66666f;
-        wave.mobCap = 25;
+        wave.mobCap = 50;
         wave.spawnRate = 2.5f;
         wave.hazard = "";
 
@@ -198,7 +198,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[4];
         wave.enemies[1] = enemies[5];
         wave.ratio = .25f;
-        wave.mobCap = 25;
+        wave.mobCap = 50;
         wave.spawnRate = 2.5f;
         wave.hazard = "";
 
@@ -208,7 +208,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[5];
         wave.enemies[1] = "";
         wave.ratio = 1f;
-        wave.mobCap = 30;
+        wave.mobCap = 60;
         wave.spawnRate = 2.5f;
         wave.hazard = "mad_howls";
 
@@ -218,7 +218,7 @@ public class wavewriter : MonoBehaviour
         wave.enemies[0] = enemies[5];
         wave.enemies[1] = "";
         wave.ratio = 1f;
-        wave.mobCap = 20;
+        wave.mobCap = 40;
         wave.spawnRate = 3f;
         wave.hazard = "boss2";
 
