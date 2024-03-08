@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7423428394096539486}
   - component: {fileID: 8702023839903112139}
   - component: {fileID: 251691447056168913}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: potshot
-  m_TagString: Enemy
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 28391815
+  m_SortingLayer: 4
   m_SortingOrder: -331
   m_Sprite: {fileID: 21300000, guid: 94da1f2bc987cb74597f03d64358f540, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

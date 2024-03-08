@@ -53,8 +53,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: player
-    uniqueID: 3220573305
+  - name: BG2
+    uniqueID: 2326134539
+    locked: 0
+  - name: BG1
+    uniqueID: 1118577657
     locked: 0
   - name: enemies
     uniqueID: 4277308883
@@ -62,9 +65,6 @@ TagManager:
   - name: bullets
     uniqueID: 28391815
     locked: 0
-  - name: BG1
-    uniqueID: 1118577657
-    locked: 0
-  - name: BG2
-    uniqueID: 2326134539
+  - name: player
+    uniqueID: 3220573305
     locked: 0
