@@ -7,6 +7,8 @@ public class GavelMoveScript : MonoBehaviour
     public Vector3 gavelDir;
     public float speed;
     public float fallSpeed;
+    public int level;
+    public int damage;
     private Vector3 down;
     public GameObject player;//necessary to get direction
     // Start is called before the first frame update
@@ -37,6 +39,47 @@ public class GavelMoveScript : MonoBehaviour
 
         fallSpeed += 0.02f;
         transform.position = transform.position + (gavelDir * speed * Time.deltaTime) + (down * fallSpeed * Time.deltaTime);
+    }
+
+    void Upgrade()
+    {
+        level += 1;
+        switch (level)
+        {
+            case 1:
+                break;
+                //need sprite renderer to increase size
+            case 2:
+                break;
+                //need gavel spawning in player to implement count increase
+            case 3:
+                player.GetComponent<PlayerBaseScript>().changeFR(1, 1250);
+                break;
+            case 4:
+                //another size increase
+                damage += 5;
+                break;
+            case 5:
+                //count increase
+                break;
+            case 6:
+                //count increase
+                damage += 5;
+                break;
+            case 7:
+                player.GetComponent<PlayerBaseScript>().changeFR(1, 1000);
+                break;
+            case 8:
+                speed += 0.2f;
+                damage += 5;
+                break;
+            case 9://infinite upgrade
+                //call for player choice/UI
+                level -= 1;
+                break;
+            default:
+                break;//shouldn't happen; good practice
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
