@@ -135,8 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Playerdata: {fileID: 0}
   targetDif: {x: 0, y: 0, z: 0}
-  entitySpeed: 5
+  entitySpeed: 20
   lineFollow: 1
   immuneFrame: 0
   damage: 1
-  range: 20
+  range: 50
