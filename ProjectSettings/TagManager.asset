@@ -20,14 +20,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - bullets
+  - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - player
+  - enemies
+  - bullets
+  - BG1
+  - BG2
   - 
   - 
   - 
@@ -52,4 +52,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: player
+    uniqueID: 3220573305
+    locked: 0
+  - name: enemies
+    uniqueID: 4277308883
+    locked: 0
+  - name: bullets
+    uniqueID: 28391815
+    locked: 0
+  - name: BG1
+    uniqueID: 1118577657
+    locked: 0
+  - name: BG2
+    uniqueID: 2326134539
     locked: 0
