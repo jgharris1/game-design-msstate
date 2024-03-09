@@ -10,7 +10,7 @@ public class FriendlyWormScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        wormDir = new Vector3(-1.0f, 0.0f, 0.0f);//probably going to do a little more with this, may randomize
+        wormDir = new Vector3(-1.0f, Random.Range(-10.0f, 10.0f), 0.0f);//probably going to do a little more with this, may randomize
     }
 
     // Update is called once per frame
