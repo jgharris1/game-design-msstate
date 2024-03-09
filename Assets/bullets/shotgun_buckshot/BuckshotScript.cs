@@ -7,6 +7,7 @@ public class BuckshotScript : MonoBehaviour
     public Vector3 buckshotDir;
     public float speed;
     public float startPosOffset;
+    public int damage;
     public GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,11 @@ public class BuckshotScript : MonoBehaviour
 
         transform.position = transform.position + (buckshotDir * speed * Time.deltaTime);
     }
+    void Upgrade()
+    {
+        damage += 5;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")//will need to be an enemy tag if multiple enemies
