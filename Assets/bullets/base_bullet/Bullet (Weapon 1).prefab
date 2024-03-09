@@ -51,10 +51,13 @@ MonoBehaviour:
   speed: 2
   range: 10
   pierce: 0
+  level: 0
   damage: 5
   statusId: 0
   statusLevel: 0
   statusDur: 0
+  player: {fileID: 4888207736547673525, guid: 556bd1a14153a5a479e2c186c8c184ca, type: 3}
+  gun: {fileID: 7731587078911307341, guid: f519a56f99ddf2f41a4306111e284cec, type: 3}
 --- !u!212 &2684754897011931407
 SpriteRenderer:
   m_ObjectHideFlags: 0

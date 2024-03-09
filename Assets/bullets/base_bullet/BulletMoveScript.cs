@@ -17,6 +17,7 @@ public class BulletMoveScript : MonoBehaviour
     public int statusLevel;
     public float statusDur;
     public GameObject player;
+    public GameObject gun;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +63,7 @@ public class BulletMoveScript : MonoBehaviour
                 speed += 0.1f;
                 break;
             case 3:
-                //fire two shots instead of one
+                gun.GetComponent<weapon0script>().setBulletCount(2);
                 break;
             case 4:
                 damage += 5;
@@ -75,7 +76,7 @@ public class BulletMoveScript : MonoBehaviour
                 player.GetComponent<PlayerBaseScript>().changeFR(0, 400);
                 break;
             case 7:
-                //3 shots instead of 2
+                gun.GetComponent<weapon0script>().setBulletCount(3);
                 break;
             case 8:
                 damage += 10;
