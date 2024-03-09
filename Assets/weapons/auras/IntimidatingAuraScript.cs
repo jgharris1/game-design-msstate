@@ -9,6 +9,7 @@ public class IntimidatingAuraScript : MonoBehaviour
     
     public damageData attack;
     public string attackmessage;
+    public int level;
     public int damage;
     public int statusId;
     public int statusLevel;
@@ -35,6 +36,45 @@ public class IntimidatingAuraScript : MonoBehaviour
         {
             timeTable[collision] = Time.time + cooldown;
             collision.gameObject.SendMessage("damageApply", attackmessage);
+        }
+    }
+
+    void Upgrade()
+    {
+        level += 1;
+        switch (level)
+        {
+            case 1:
+                //increase size
+                break;
+            case 2:
+                damage += 1;
+                break;
+            case 3:
+                damage += 2;
+                break;
+            case 4:
+                //another size increase
+                //are we still doing crit chance
+                break;
+            case 5:
+                cooldown -= .05f;
+                break;
+            case 6:
+                //not sure what the difference is between damage delay and cooldown
+                break;
+            case 7:
+                //size increase
+                break;
+            case 8:
+                //crit chance
+                break;
+            case 9://infinite upgrade
+                //call for player choice/UI
+                level -= 1;
+                break;
+            default:
+                break;//shouldn't happen; good practice
         }
     }
 
