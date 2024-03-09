@@ -70,7 +70,7 @@ public class IntimidatingAuraScript : MonoBehaviour
                 //crit chance
                 break;
             case 9://infinite upgrade
-                //call for player choice/UI
+                damage += 2;
                 level -= 1;
                 break;
             default:

@@ -59,7 +59,7 @@ public class DynamiteScript : MonoBehaviour
                 player.GetComponent<PlayerBaseScript>().changeFR(6, 9000);
                 break;
             case 9://infinite upgrade
-                //call for player choice/UI
+                damage += 10;
                 level -= 1;
                 break;
             default:

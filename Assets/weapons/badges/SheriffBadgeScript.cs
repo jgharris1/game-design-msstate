@@ -74,7 +74,7 @@ public class SheriffBadgeScript : MonoBehaviour
                 //size increase
                 break;
             case 9://infinite upgrade
-                //call for player choice/UI
+                damage += 5;
                 level -= 1;
                 break;
             default:
