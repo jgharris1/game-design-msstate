@@ -6,6 +6,8 @@ public class FriendlyWormScript : MonoBehaviour
 {
     public Vector3 wormDir;
     public float speed;
+    public int damage;
+    public int level;
     public GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,44 @@ public class FriendlyWormScript : MonoBehaviour
         }
 
         transform.position = transform.position + (wormDir * speed * Time.deltaTime);
+    }
+
+    void Upgrade()
+    {
+        level += 1;
+        switch (level)
+        {
+            case 1:
+                //increase size
+                break;
+            case 2:
+                damage += 5;
+                break;
+            case 3:
+                //size increase
+                break;
+            case 4:
+                player.GetComponent<PlayerBaseScript>().changeFR(5, 4750);
+                break;
+            case 5:
+                //size increase;
+                break;
+            case 6:
+                damage += 5;
+                break;
+            case 7:
+                damage += 5;
+                break;
+            case 8:
+                //size
+                break;
+            case 9://infinite upgrade
+                damage += 5;
+                level -= 1;
+                break;
+            default:
+                break;//shouldn't happen; good practice
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
