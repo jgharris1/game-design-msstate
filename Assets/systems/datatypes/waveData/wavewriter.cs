@@ -13,6 +13,9 @@ public class wavewriter : MonoBehaviour
 
     public GameObject playerPrefab;
     GameObject player;
+
+    public GameObject backgroundPrefab;
+    GameObject background;
     public string[] enemies = new string[6];
 
 
@@ -229,6 +232,7 @@ public class wavewriter : MonoBehaviour
         string filePath = Application.persistentDataPath + "/WaveFile.json";
         File.WriteAllText(filePath, wavesList.SaveToString());
         player = Instantiate(playerPrefab, transform.position, transform.rotation);
+        background = Instantiate(backgroundPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 
