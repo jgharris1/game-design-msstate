@@ -11,10 +11,12 @@ public class BulletMoveScript : MonoBehaviour
     public float range;
     public float pierce;
     public damageData attack;
+    public int level;
     public int damage;
     public int statusId;
     public int statusLevel;
     public float statusDur;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,46 @@ public class BulletMoveScript : MonoBehaviour
             Destroy(gameObject);
         }
         transform.position = transform.position + (bulletDir * speed) * Time.deltaTime;
+    }
+
+    void Upgrade()
+    {
+        level += 1;
+        switch (level)
+        {
+            case 1:
+                damage += 2;
+                break;
+            case 2:
+                damage += 3;
+                speed += 0.1f;
+                break;
+            case 3:
+                //fire two shots instead of one
+                break;
+            case 4:
+                damage += 5;
+                //crit chance increase
+                break;
+            case 5:
+                //size increase;
+                break;
+            case 6:
+                player.GetComponent<PlayerBaseScript>().changeFR(0, 400);
+                break;
+            case 7:
+                //3 shots instead of 2
+                break;
+            case 8:
+                damage += 10;
+                break;
+            case 9://infinite upgrade
+                damage += 5;
+                level -= 1;
+                break;
+            default:
+                break;//shouldn't happen; good practice
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
