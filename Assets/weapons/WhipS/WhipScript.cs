@@ -7,6 +7,7 @@ public class WhipScript : MonoBehaviour
     public Vector3 whipDir;
     public GameObject player;
     private float timer = 0.0f;
+    public int damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,11 @@ public class WhipScript : MonoBehaviour
         }
 
         transform.position = player.transform.position;
+    }
+
+    void Upgrade()
+    {
+        damage += 5;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
