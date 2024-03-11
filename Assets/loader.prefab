@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4888207736547673525, guid: 556bd1a14153a5a479e2c186c8c184ca, type: 3}
+  backgroundPrefab: {fileID: 3754551415373701636, guid: 9c72882755dfb4245a837c8be7c53e20, type: 3}
   enemies:
   - 
   - 

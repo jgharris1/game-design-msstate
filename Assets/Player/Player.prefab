@@ -173,23 +173,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDir: {x: 0, y: 0, z: 0}
   health: 3
-  entitySpeed: 3
-  entitySpeedBackup: 0
-  dead: 0
+  entitySpeed: 2
   experience: 10
   xpgoal: 0
-  mad_howl_effect: 0
-  mad_howl_timer: 0
-  scale: {x: 0, y: 0, z: 0}
-  Frame: 0
-  frameTimer: 0
   frameRate: 0.5
-  spriteRenderer: {fileID: 0}
-  newSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &6099731655906644404
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +231,7 @@ MonoBehaviour:
   dirVec: {x: 0, y: 0, z: 0}
   enemyPrefab: {fileID: 2003824432490548672, guid: c2910fb6b1c28e24f9e8501b622887fa, type: 3}
   potshotPrefab: {fileID: 977006039692646235, guid: 61093fca2420b0540bd680d45398afaa, type: 3}
+  howlPrefab: {fileID: 4114264792841064207, guid: 03d8b10af27779f428009c012a4bd913, type: 3}
   randCheck: 0
   waveid: 0
   spawnLimit: 5
@@ -257,6 +245,7 @@ MonoBehaviour:
   enemycnt: 0
   pause: 0
   potshot: 0
+  howl: 0
 --- !u!1 &6779002174486586102
 GameObject:
   m_ObjectHideFlags: 0

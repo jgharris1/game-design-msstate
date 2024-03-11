@@ -25,6 +25,7 @@ public class PlayerBaseScript : MonoBehaviour
     public float frameRate;
     private SpriteRenderer spriteRenderer;
     private Sprite[] newSprites = new Sprite[4];
+    public float speedshow;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +63,7 @@ public class PlayerBaseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speedshow = entitySpeed;
         if (!dead)
         {
             updateTimers();

@@ -24,9 +24,13 @@ public class enemybasescript : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite[] newSprites = new Sprite[4];
     public float range = 16f;
+    public bool boss;
+    public Vector3 dirVec;
+    public float size;
     // Start is called before the first frame update
     void Start()
     {
+        dirVec = new Vector3(0f, 0f, 0f);
         stats = new enemyData();
         attackout = new damageData();
         attackout.damage = damage;
@@ -36,7 +40,7 @@ public class enemybasescript : MonoBehaviour
         Playerdata = GameObject.FindWithTag("Player");
         targetDif = new Vector3(0.0f, 0.0f, 0.0f);
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        scale = transform.localScale;
+        scale.Set(size, size, 0);
     }
 
     // Update is called once per frame
@@ -44,7 +48,14 @@ public class enemybasescript : MonoBehaviour
     {
         if (Vector3.Distance(Playerdata.transform.position, transform.position) > range)//100 is arbitrary, just has to be offscreen
         {
-            Destroy(gameObject);
+            if (!boss)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                transform.position = Playerdata.transform.position + targetDif * Random.Range(10, 15);
+            }
         }
         immuneFrame -= Time.deltaTime;
         if (!lineFollow)
@@ -55,21 +66,28 @@ public class enemybasescript : MonoBehaviour
                 targetDif = Vector3.Normalize(targetDif);
             }
         }
-        if (frameTimer > frameRate)
+        if (Frames > 1)
         {
-            frameTimer = 0f;
-            Frame += 1;
-            Frame %= Frames;
-            spriteRenderer.sprite = newSprites[Frame];
+            if (frameTimer > frameRate)
+            {
+                frameTimer = 0f;
+                Frame += 1;
+                Frame %= Frames;
+                spriteRenderer.sprite = newSprites[Frame];
+            }
+            frameTimer += Time.deltaTime;
         }
-        frameTimer += Time.deltaTime;
         if (targetDif.x < 0)
         {
-            scale.x = 5;
+            scale.x = size;
         }
         else
         {
-            scale.x = -5;
+            scale.x = -size;
+        }
+        if (boss)
+        {
+            scale.x = -scale.x;
         }
         transform.localScale = scale;
         transform.position = transform.position + (targetDif * entitySpeed) * Time.deltaTime;
@@ -107,6 +125,7 @@ public class enemybasescript : MonoBehaviour
         }
         Frames = stats.animFrames;
         frameRate = stats.frameRate;
+        size = stats.size;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

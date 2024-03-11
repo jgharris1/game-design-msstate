@@ -26,59 +26,57 @@ public class wavewriter : MonoBehaviour
         enemy = new enemyData();
         enemy.name = "tumbleweed";
         enemy.HP = 1;
-        enemy.speed = 0.9f;
+        enemy.speed = 1.8f;
         enemy.XP = 1f;
         enemy.animFrames = 4;
         enemy.frameRate = .3f;
+        enemy.size = 3;
         enemies[0] = enemy.SaveToString();
 
         enemy.name = "blackbird";
         enemy.HP = 7;
-        enemy.speed = 0.8f;
+        enemy.speed = 1.6f;
         enemy.XP = 1f;
         enemy.animFrames = 2;
         enemy.frameRate = .3f;
+        enemy.size = 3;
         enemies[1] = enemy.SaveToString();
 
         enemy.name = "vulture";
         enemy.HP = 16;
-        enemy.speed = 0.85f;
+        enemy.speed = 1.7f;
         enemy.XP = 1.2f;
         enemy.animFrames = 1;
         enemy.frameRate = .3f;
+        enemy.size = 3;
         enemies[2] = enemy.SaveToString();
 
         enemy.name = "coyote";
         enemy.HP = 24;
-        enemy.speed = 0.85f;
+        enemy.speed = 1.7f;
         enemy.XP = 1.2f;
         enemy.animFrames = 2;
         enemy.frameRate = .3f;
+        enemy.size = 3;
         enemies[3] = enemy.SaveToString();
 
         enemy.name = "wolf";
         enemy.HP = 30;
-        enemy.speed = 0.9f;
+        enemy.speed = 1.8f;
         enemy.XP = 1.3f;
         enemy.animFrames = 2;
         enemy.frameRate = .3f;
+        enemy.size = 3;
         enemies[4] = enemy.SaveToString();
 
         enemy.name = "blackwolf";
         enemy.HP = 40;
-        enemy.speed = 0.9f;
+        enemy.speed = 1.8f;
         enemy.XP = 1.5f;
         enemy.animFrames = 2;
         enemy.frameRate = .3f;
+        enemy.size = 3;
         enemies[5] = enemy.SaveToString();
-
-        /*enemy.name = "outlaw";
-        enemy.HP = 300;
-        enemy.speed = 0.95f;
-        enemy.XP = 500f;
-        enemy.animFrames = 1;
-        enemy.frameRate = .3f;
-        enemies[3] = enemy.SaveToString();*/
 
 
         //waves -------------------------------------------------------------------------------------

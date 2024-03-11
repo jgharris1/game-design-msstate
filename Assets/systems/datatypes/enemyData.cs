@@ -10,6 +10,7 @@ public class enemyData
     public float XP;
     public int animFrames;
     public float frameRate;
+    public float size;
 
     public string SaveToString()
     {

@@ -135,6 +135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   timer: 0
-  spawnTime: 2.5
+  spawnTime: 1
   percentage: 0
   scale: {x: 0, y: 0, z: 0}

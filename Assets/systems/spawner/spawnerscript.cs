@@ -14,6 +14,9 @@ public class spawnerscript : MonoBehaviour
     public Vector3 dirVec;
     public GameObject enemyPrefab;
     public GameObject potshotPrefab;
+    public GameObject howlPrefab;
+    public GameObject boss1Prefab;
+    public GameObject boss2Prefab;
     GameObject enemy;
     public int randCheck;
 
@@ -31,6 +34,7 @@ public class spawnerscript : MonoBehaviour
     public bool pause;
 
     public bool potshot;
+    public bool howl;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +67,15 @@ public class spawnerscript : MonoBehaviour
                 hazardTimer = 0f;
             }
         }
+        if (howl)
+        {
+            hazardTimer += Time.deltaTime;
+            if (hazardTimer >= hazardRate)
+            {
+                Howl();
+                hazardTimer = 0f;
+            }
+        }
         if (waveTimer > waveGoal)
         {
             nextWave();
@@ -89,6 +102,22 @@ public class spawnerscript : MonoBehaviour
             if (hazard == "potshot")
             {
                 potshot = true;
+            }
+            else if (hazard == "mad_howls")
+            {
+                howl = true;
+            }
+            else if (hazard == "boss1")
+            {
+                dirVec.Set(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
+                dirVec = Vector3.Normalize(dirVec);
+                Instantiate(boss1Prefab, transform.parent.position + (dirVec * Random.Range(spawnDistMin, spawnDistMax)), transform.parent.rotation);
+            }
+            else if (hazard == "boss2")
+            {
+                dirVec.Set(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
+                dirVec = Vector3.Normalize(dirVec);
+                Instantiate(boss2Prefab, transform.parent.position + (dirVec * Random.Range(spawnDistMin, spawnDistMax)), transform.parent.rotation);
             }
         }
     }
@@ -124,11 +153,18 @@ public class spawnerscript : MonoBehaviour
     public void hazardDisable()
     {
         potshot = false;
+        howl = false;
     }
 
     public void PotShot()
     {
-        
         Instantiate(potshotPrefab);
+    }
+
+    public void Howl()
+    {
+        dirVec.Set(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
+        dirVec = Vector3.Normalize(dirVec);
+        Instantiate(howlPrefab, transform.parent.position + (dirVec * Random.Range(spawnDistMin, spawnDistMax)), transform.parent.rotation);
     }
 }

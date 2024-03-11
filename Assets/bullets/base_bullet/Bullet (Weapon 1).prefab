@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDir: {x: 0, y: 0, z: 0}
   Playerdata: {fileID: 0}
-  speed: 2
+  speed: 5
   range: 10
   pierce: 0
   damage: 5
