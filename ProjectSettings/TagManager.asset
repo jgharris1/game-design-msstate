@@ -16,6 +16,8 @@ TagManager:
   - gun4
   - gun5
   - gun6
+  - deathscreen
+  - background
   layers:
   - Default
   - TransparentFX
