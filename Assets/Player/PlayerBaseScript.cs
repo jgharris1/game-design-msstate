@@ -7,6 +7,7 @@ public class PlayerBaseScript : MonoBehaviour
 
     public Vector3 playerDir;
     public int health;
+    public int healthMax = 3;
     private float entitySpeed = 3;
     private float entitySpeedBackup;
     private damageData attack;
@@ -26,9 +27,17 @@ public class PlayerBaseScript : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Sprite[] newSprites = new Sprite[4];
     public float speedshow;
+
+    public float XPBonus = 1f;
+    public GameObject spawner;
+
+    public bool[] passives = new bool[8];
+    public float[,] passiveFx = new float[8,4] { { 3f, 0f, 0f, 0f }, { 0f, 0.2f, 0f, 0f }, { 0f, 0f, 0.2f, 0f }, { 0f, -0.1f, 0.5f, 0f }, { 0f, 0f, 0f, 0.1f }, { -1f, 0.2f, 0f, 0f }, { 5f, -.1f, 0f, 0f }, { 0f, 0f, -0.1f, 0.25f } };
     // Start is called before the first frame update
     void Start()
     {
+        spawner = GameObject.FindGameObjectWithTag("Spawner");
+        health = healthMax;
         entitySpeedBackup = entitySpeed;
         for (int i = 0; i < 7; i++)
         {
@@ -58,6 +67,8 @@ public class PlayerBaseScript : MonoBehaviour
         {
             newSprites[i] = Resources.Load<Sprite>(linkBase + (i + 1));
         }
+        applyPassive(1);
+        applyPassive(1);
     }
 
     // Update is called once per frame
@@ -141,7 +152,7 @@ public class PlayerBaseScript : MonoBehaviour
 
     public void addEXP(float xp)
     {
-        experience += xp;
+        experience += (int)(xp * XPBonus);
         if (experience > xpgoal)
         {
             experience -= xpgoal;
@@ -185,5 +196,32 @@ public class PlayerBaseScript : MonoBehaviour
         mad_howl_effect = true;
         mad_howl_timer = 5.0f;
         entitySpeed = entitySpeed * 0.95f;
+    }
+
+    public void applyPassive(int ID)
+    {
+        health += (int)passiveFx[ID,0];
+        healthMax += (int)passiveFx[ID,0];
+        entitySpeed += passiveFx[ID,1];
+        entitySpeedBackup += passiveFx[ID,1];
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            enemy.SendMessage("setDMGBonus", passiveFx[ID,2]);
+        }
+        spawner.SendMessage("setDMGBonus", passiveFx[ID, 2]);
+        XPBonus += passiveFx[ID, 3];
+        if (health <= 0)
+        {
+            dead = true;
+            GameObject.FindGameObjectWithTag("Spawner").SetActive(false);
+            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                enemy.SetActive(false);
+            }
+            foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
+            {
+                bullet.SetActive(false);
+            }
+        }
     }
 }

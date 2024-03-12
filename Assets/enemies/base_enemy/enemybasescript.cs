@@ -27,6 +27,7 @@ public class enemybasescript : MonoBehaviour
     public bool boss;
     public Vector3 dirVec;
     public float size;
+    public float DMGBonus = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -103,7 +104,7 @@ public class enemybasescript : MonoBehaviour
     public void damageApply(string attackStr)//, int statusId = 0, int statusLevel = 0, float duration = 0)
     {
         attackin = JsonUtility.FromJson<damageData>(attackStr);
-        health -= attackin.damage;
+        health -= (int)(attackin.damage * DMGBonus);
         if (health <= 0)
         {
             Playerdata.SendMessage("addEXP", XP);
@@ -138,5 +139,10 @@ public class enemybasescript : MonoBehaviour
                 damageApply(attackout.SaveToString());
             }
         }
+    }
+
+    public void setDMGBonus(float Bonus)
+    {
+        DMGBonus += Bonus;
     }
 }

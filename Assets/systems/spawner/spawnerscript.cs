@@ -35,6 +35,7 @@ public class spawnerscript : MonoBehaviour
 
     public bool potshot;
     public bool howl;
+    public float DMGBonus;
     // Start is called before the first frame update
     void Start()
     {
@@ -137,7 +138,8 @@ public class spawnerscript : MonoBehaviour
                     randCheck = 1;
                 }
                 enemy = Instantiate(enemyPrefab, transform.parent.position + (dirVec * Random.Range(spawnDistMin, spawnDistMax)), transform.parent.rotation);
-                enemy.SendMessage("setData", enemies[randCheck]);
+                enemy.SendMessage("setData", enemies[randCheck]); 
+                enemy.SendMessage("setDMGBonus", DMGBonus);
             }
         }
     }
@@ -166,5 +168,10 @@ public class spawnerscript : MonoBehaviour
         dirVec.Set(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0);
         dirVec = Vector3.Normalize(dirVec);
         Instantiate(howlPrefab, transform.parent.position + (dirVec * Random.Range(spawnDistMin, spawnDistMax)), transform.parent.rotation);
+    }
+
+    public void setDMGBonus(float Bonus)
+    {
+        DMGBonus += Bonus;
     }
 }
