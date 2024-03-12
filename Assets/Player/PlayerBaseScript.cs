@@ -30,6 +30,7 @@ public class PlayerBaseScript : MonoBehaviour
 
     public float XPBonus = 1f;
     public GameObject spawner;
+    public GameObject deathscreen;
 
     public bool[] passives = new bool[8];
     public float[,] passiveFx = new float[8,4] { { 3f, 0f, 0f, 0f }, { 0f, 0.2f, 0f, 0f }, { 0f, 0f, 0.2f, 0f }, { 0f, -0.1f, 0.5f, 0f }, { 0f, 0f, 0f, 0.1f }, { -1f, 0.2f, 0f, 0f }, { 5f, -.1f, 0f, 0f }, { 0f, 0f, -0.1f, 0.25f } };
@@ -37,6 +38,8 @@ public class PlayerBaseScript : MonoBehaviour
     void Start()
     {
         spawner = GameObject.FindGameObjectWithTag("Spawner");
+        deathscreen = GameObject.FindGameObjectsWithTag("deathscreen")[GameObject.FindGameObjectsWithTag("deathscreen").Length-1];
+        deathscreen.SetActive(false);
         health = healthMax;
         entitySpeedBackup = entitySpeed;
         for (int i = 0; i < 7; i++)
@@ -129,6 +132,11 @@ public class PlayerBaseScript : MonoBehaviour
                 transform.position = transform.position + (playerDir * entitySpeed) * Time.deltaTime;
             }
         }
+        else
+        {
+            playerDir.Set(-1f, 0f, 0f);
+            transform.position = transform.position + (playerDir * entitySpeed) * Time.deltaTime;
+        }
     }
 
     public void damageApply(string attackStr)//, int statusId = 0, int statusLevel = 0, float duration = 0)
@@ -137,16 +145,7 @@ public class PlayerBaseScript : MonoBehaviour
         health -= attack.damage;
         if (health <= 0)
         {
-            dead = true;
-            GameObject.FindGameObjectWithTag("Spawner").SetActive(false);
-            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-            {
-                enemy.SetActive(false);
-            }
-            foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
-            {
-                bullet.SetActive(false);
-            }
+            InstDeath();
         }
     }
 
@@ -200,28 +199,32 @@ public class PlayerBaseScript : MonoBehaviour
 
     public void applyPassive(int ID)
     {
-        health += (int)passiveFx[ID,0];
-        healthMax += (int)passiveFx[ID,0];
-        entitySpeed += passiveFx[ID,1];
-        entitySpeedBackup += passiveFx[ID,1];
+        health += (int)passiveFx[ID, 0];
+        healthMax += (int)passiveFx[ID, 0];
+        entitySpeed += passiveFx[ID, 1];
+        entitySpeedBackup += passiveFx[ID, 1];
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            enemy.SendMessage("setDMGBonus", passiveFx[ID,2]);
+            enemy.SendMessage("setDMGBonus", passiveFx[ID, 2]);
         }
         spawner.SendMessage("setDMGBonus", passiveFx[ID, 2]);
         XPBonus += passiveFx[ID, 3];
         if (health <= 0)
         {
-            dead = true;
-            GameObject.FindGameObjectWithTag("Spawner").SetActive(false);
-            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-            {
-                enemy.SetActive(false);
-            }
-            foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
-            {
-                bullet.SetActive(false);
-            }
+            InstDeath();
         }
+    }
+
+    public void InstDeath()
+    {
+        dead = true;
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        GameObject.FindGameObjectWithTag("Spawner").SetActive(false);
+        spriteRenderer.sprite = newSprites[3];
+        transform.Rotate(0f, 0f, 90f, Space.Self);
+        scale.x = 3;
+        transform.localScale = scale;
+        Camera.main.gameObject.transform.Rotate(0f, 0f, -90f, Space.Self);
+        deathscreen.SetActive(true);
     }
 }

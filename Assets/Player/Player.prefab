@@ -236,8 +236,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2003824432490548672, guid: c2910fb6b1c28e24f9e8501b622887fa, type: 3}
   potshotPrefab: {fileID: 977006039692646235, guid: 61093fca2420b0540bd680d45398afaa, type: 3}
   howlPrefab: {fileID: 4114264792841064207, guid: 03d8b10af27779f428009c012a4bd913, type: 3}
-  boss1Prefab: {fileID: 0}
-  boss2Prefab: {fileID: 0}
+  boss1Prefab: {fileID: 2003824432490548672, guid: e15f815cfca9bc94fa50838e3066ebdd, type: 3}
+  boss2Prefab: {fileID: 2003824432490548672, guid: 5fa1c0f137f33a24d9563799b721a36e, type: 3}
   randCheck: 0
   waveid: 0
   spawnLimit: 5

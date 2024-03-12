@@ -79,7 +79,15 @@ public class spawnerscript : MonoBehaviour
         }
         if (waveTimer > waveGoal)
         {
-            nextWave();
+            if (waveTimer >= 750)
+            {
+                transform.parent.SendMessage("InstDeath");
+                waveGoal += waveGoal;
+            }
+            else
+            {
+                nextWave();
+            }
         }
         if (spawnTimer < 0)
         {
