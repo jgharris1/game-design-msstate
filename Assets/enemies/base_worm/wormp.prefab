@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4349383395395332250}
   - component: {fileID: 2478187910890159929}
   - component: {fileID: 4589136492650536324}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: wormp
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

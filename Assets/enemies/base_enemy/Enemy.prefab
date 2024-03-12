@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2601965336211686249}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2003824432490548672}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.29, y: -0.47, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -17658413
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -144,11 +144,11 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &2601965336211686249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +162,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Playerdata: {fileID: 0}
-  Selfdata: {fileID: 0}
   targetDif: {x: 0, y: 0, z: 0}
+  health: 10
   entitySpeed: 0
+  lineFollow: 0
+  immuneFrame: 2
+  XP: 0
+  damage: 1
+  scale: {x: 0, y: 0, z: 0}
+  Frames: 0
+  Frame: 0
+  frameTimer: 0
+  frameRate: 0
+  spriteRenderer: {fileID: 0}
+  newSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  range: 16
+  boss: 0
+  dirVec: {x: 0, y: 0, z: 0}
+  size: 0
