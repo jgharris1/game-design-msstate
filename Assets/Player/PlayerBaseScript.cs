@@ -34,6 +34,8 @@ public class PlayerBaseScript : MonoBehaviour
 
     private bool[] passives = new bool[8];
     private float[,] passiveFx = new float[8,4] { { 3f, 0f, 0f, 0f }, { 0f, 0.2f, 0f, 0f }, { 0f, 0f, 0.2f, 0f }, { 0f, -0.1f, 0.5f, 0f }, { 0f, 0f, 0f, 0.1f }, { -1f, 0.2f, 0f, 0f }, { 5f, -.1f, 0f, 0f }, { 0f, 0f, -0.1f, 0.25f } };
+
+    public AudioSource levelAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -186,6 +188,7 @@ public class PlayerBaseScript : MonoBehaviour
         {
             experience -= xpgoal;
             xpgoal += 1;//--------------------------------------------------------------
+            levelAudio.Play();
             levelup();
         }
     }

@@ -2,24 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class weapon1script : MonoBehaviour
+public class weapon2script : MonoBehaviour
 {
     public GameObject bulletPrefab;
     GameObject bullet;
     private PlayerBaseScript playerData;
     public int level = 1;
-    private int damage = 5;
-    private float speed = 5;
-    private float size = .6f;
-    private int burst = 5;
+    private int damage = 8;
+    private float speed = 4f;
+    private float size = 1f;
+    private int burst = 1;
+    private float badgemsg = 1f;
+    private int ID = 2;
     // Start is called before the first frame update
+    void Start()
+    {
+        playerData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBaseScript>();
+    }
 
     void Attack()
     {
+        GetComponent<AudioSource>().Play();
         for (int i = 0; i < burst; i++)
         {
+            badgemsg = (float)burst + (float)i * 0.1f;
             bullet = Instantiate(bulletPrefab, transform.parent.position, transform.parent.rotation);
-            bullet.GetComponent<BulletMoveScript>().setData(damage, speed, size, 1);
+            bullet.GetComponent<BulletMoveScript>().setData(damage, speed, size, 2, badgemsg);
         }
     }
 
@@ -29,28 +37,32 @@ public class weapon1script : MonoBehaviour
         switch (level)
         {
             case 2:
-                burst = 6;
+                size = 1.2f;
+                speed = 4.4f;
                 break;
             case 3:
-                burst = 7;
+                burst = 2;
                 break;
             case 4:
-                burst = 8;
+                playerData.changeFR(ID, .8f);
                 break;
             case 5:
-                burst = 9;
+                size = 1.3f;
                 break;
             case 6:
-                burst = 10;
+                burst = 3;
                 break;
             case 7:
-                burst = 11;
+                burst = 4;
+                speed = 5f;
                 break;
             case 8:
-                burst = 12;
+                burst = 5;
+                damage = 13;
                 break;
             case 9:
-                burst = 13;
+                speed = 5.8f;
+                size = 1.5f;
                 break;
         }
     }

@@ -18,6 +18,7 @@ public class weapon0script : MonoBehaviour
     public int burstleft = 1;
     public float bursttimer = 0f;
     private float burstRate = 0.05f;
+    public AudioSource Audio;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +35,7 @@ public class weapon0script : MonoBehaviour
                 bullet = Instantiate(bulletPrefab, transform.parent.position, transform.parent.rotation);
                 bullet.GetComponent<BulletMoveScript>().setData(damage, speed, size, 0);
                 burstleft -= 1;
-                bursttimer = 0f;
+                bursttimer = 0f; 
             }
         }
     }
@@ -44,7 +45,8 @@ public class weapon0script : MonoBehaviour
         bullet = Instantiate(bulletPrefab, transform.parent.position, transform.parent.rotation);
         bullet.GetComponent<BulletMoveScript>().setData(damage, speed, size, 0);
         burstleft = burstsize - 1;
-        bursttimer = 0f;
+        bursttimer = 0f; 
+        Audio.Play();
     }
 
     void Upgrade()

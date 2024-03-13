@@ -25,7 +25,8 @@ public class BulletMoveScript : MonoBehaviour
     private float timer;
     private float percentage;
     private float spawnTime = .3f;
-
+    public AudioSource boom;
+    public AudioSource shift;
     // Start is called before the first frame update
     void Start()
     {
@@ -123,6 +124,7 @@ public class BulletMoveScript : MonoBehaviour
             transform.position += offset;
             gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("weapons/worm_friend");
             GetComponent<CapsuleCollider2D>().enabled = true;
+            shift.Play();
         }
         else if (style == 6)
         {
@@ -224,6 +226,7 @@ public class BulletMoveScript : MonoBehaviour
 
     private void Explode()
     {
+        boom.Play();
         used = true;
         transform.localScale = new Vector3(size * 5, size * 5, 0f);
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("weapons/badge");

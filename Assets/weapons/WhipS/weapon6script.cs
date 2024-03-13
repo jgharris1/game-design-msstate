@@ -22,6 +22,7 @@ public class weapon6script : MonoBehaviour
 
     void Attack()
     {
+        GetComponent<AudioSource>().Play();
         bullet = Instantiate(bulletPrefab, transform.parent.position, transform.parent.rotation);
         bullet.GetComponent<BulletMoveScript>().setData(damage, speed, size, 6);
     }
