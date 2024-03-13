@@ -6,6 +6,7 @@ public class PlayerBaseScript : MonoBehaviour
 {
 
     public Vector3 playerDir;
+    public Vector3 previousDir;
     public int health;
     public int healthMax = 3;
     private float entitySpeed = 3;
@@ -23,20 +24,20 @@ public class PlayerBaseScript : MonoBehaviour
     private Vector3 scale;
     private int Frame;
     private float frameTimer;
-    public float frameRate;
+    private float frameRate = 0.5f;
     private SpriteRenderer spriteRenderer;
     private Sprite[] newSprites = new Sprite[4];
-    public float speedshow;
 
-    public float XPBonus = 1f;
-    public GameObject spawner;
-    public GameObject deathscreen;
+    private float XPBonus = 1f;
+    private GameObject spawner;
+    private GameObject deathscreen;
 
-    public bool[] passives = new bool[8];
-    public float[,] passiveFx = new float[8,4] { { 3f, 0f, 0f, 0f }, { 0f, 0.2f, 0f, 0f }, { 0f, 0f, 0.2f, 0f }, { 0f, -0.1f, 0.5f, 0f }, { 0f, 0f, 0f, 0.1f }, { -1f, 0.2f, 0f, 0f }, { 5f, -.1f, 0f, 0f }, { 0f, 0f, -0.1f, 0.25f } };
+    private bool[] passives = new bool[8];
+    private float[,] passiveFx = new float[8,4] { { 3f, 0f, 0f, 0f }, { 0f, 0.2f, 0f, 0f }, { 0f, 0f, 0.2f, 0f }, { 0f, -0.1f, 0.5f, 0f }, { 0f, 0f, 0f, 0.1f }, { -1f, 0.2f, 0f, 0f }, { 5f, -.1f, 0f, 0f }, { 0f, 0f, -0.1f, 0.25f } };
     // Start is called before the first frame update
     void Start()
     {
+        previousDir = new Vector3(1f, 0f, 0f);
         spawner = GameObject.FindGameObjectWithTag("Spawner");
         deathscreen = GameObject.FindGameObjectsWithTag("deathscreen")[GameObject.FindGameObjectsWithTag("deathscreen").Length-1];
         deathscreen.SetActive(false);
@@ -55,11 +56,40 @@ public class PlayerBaseScript : MonoBehaviour
             guns[i].SetActive(false);
         }
 
-        //delete later vv
-        timers[0].have = true;
+        //guns[0].SetActive(true);
+        //timers[0].have = true;
         timers[0].cooldown = 0.5f;
+        timers[1].cooldown = 1f;
+        timers[2].cooldown = 1f;
+        timers[3].cooldown = 1.5f;
+        timers[4].cooldown = 1.5f;
+        timers[5].cooldown = 3f;
+        timers[6].cooldown = 3f;
+
         guns[0].SetActive(true);
+        timers[0].have = true;
+        guns[1].SetActive(true);
+        timers[1].have = true;
+        guns[2].SetActive(true);
+        timers[2].have = true;
+        guns[3].SetActive(true);
+        timers[3].have = true;
+        guns[4].SetActive(true);
+        timers[4].have = true;
+        guns[5].SetActive(true);
+        timers[5].have = true;
+        guns[6].SetActive(true);
+        timers[6].have = true;
         guns[7].SetActive(true);
+        applyPassive(0);
+        applyPassive(1);
+        applyPassive(2);
+        applyPassive(3);
+        applyPassive(4);
+        applyPassive(5);
+        applyPassive(6);
+        applyPassive(7);
+
         // delete later^^
         playerDir = new Vector3(0.0f, 0.0f, 0.0f);
         GetComponent<Rigidbody2D>().freezeRotation = true;
@@ -77,7 +107,6 @@ public class PlayerBaseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedshow = entitySpeed;
         if (!dead)
         {
             updateTimers();
@@ -129,6 +158,7 @@ public class PlayerBaseScript : MonoBehaviour
                 }
                 transform.localScale = scale;
                 playerDir = Vector3.Normalize(playerDir);
+                previousDir = playerDir;
                 transform.position = transform.position + (playerDir * entitySpeed) * Time.deltaTime;
             }
         }
@@ -155,18 +185,21 @@ public class PlayerBaseScript : MonoBehaviour
         if (experience > xpgoal)
         {
             experience -= xpgoal;
-            xpgoal += 10;
+            xpgoal += 1;//--------------------------------------------------------------
             levelup();
         }
     }
 
     public void levelup()
     {
-        //open level up menu
-        //make choice
-        //string guntag = "gun" + weaponID;
-        //GameObject choice = FindGameObjectWithTag(guntag);
-        //choise.upgrade();
+        guns[0].SendMessage("Upgrade");
+        guns[1].SendMessage("Upgrade");
+        guns[2].SendMessage("Upgrade");
+        guns[3].SendMessage("Upgrade");
+        guns[4].SendMessage("Upgrade");
+        guns[5].SendMessage("Upgrade");
+        guns[6].SendMessage("Upgrade");
+        guns[7].SendMessage("Upgrade");
     }
 
     public void changeFR(int weaponID, float new_fireRate)

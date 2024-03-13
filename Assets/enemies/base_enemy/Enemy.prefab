@@ -135,7 +135,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 20
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -184,3 +184,4 @@ MonoBehaviour:
   boss: 0
   dirVec: {x: 0, y: 0, z: 0}
   size: 0
+  DMGBonus: 1

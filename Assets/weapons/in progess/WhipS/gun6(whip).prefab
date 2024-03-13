@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6398777600665439157
+--- !u!1 &2440410057084976801
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6721302339206676212}
-  - component: {fileID: 7216180249226728678}
+  - component: {fileID: 2108576824066829068}
+  - component: {fileID: 565650104306506419}
   m_Layer: 0
-  m_Name: loader
-  m_TagString: Untagged
+  m_Name: gun6(whip)
+  m_TagString: gun6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6721302339206676212
+--- !u!4 &2108576824066829068
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6398777600665439157}
+  m_GameObject: {fileID: 2440410057084976801}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,28 +32,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7216180249226728678
+--- !u!114 &565650104306506419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6398777600665439157}
+  m_GameObject: {fileID: 2440410057084976801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e98d82c9ddd67443a7d97dd1853a08e, type: 3}
+  m_Script: {fileID: 11500000, guid: 542df715f7cfc0449ab8f2fac63cf5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 6178763975132990959, guid: 556bd1a14153a5a479e2c186c8c184ca, type: 3}
-  deathscreenPrefab: {fileID: 7722847039228234028, guid: 9e7d40adbfb0f1d46a3f16deedbcbf02, type: 3}
-  backgroundPrefab: {fileID: 3754551415373701636, guid: 9c72882755dfb4245a837c8be7c53e20, type: 3}
-  EventSystem: {fileID: 6640996592994036720, guid: a16717012adf8f441be0ac8b6b586e14, type: 3}
-  PauseScreen: {fileID: 7561026972802047156, guid: 787b6422f1ec11b4fb9b9dd48701c4ee, type: 3}
-  enemies:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  bulletPrefab: {fileID: 2982562905542094413, guid: dc585292eafff1743ba597d7eabf05ca, type: 3}
+  level: 1

@@ -4,38 +4,38 @@ using UnityEngine;
 
 public class spawnerscript : MonoBehaviour
 {
-    public float spawnDistMin;
-    public float spawnDistMax;
-    public float spawnTimer;
+    private float spawnDistMin = 10;
+    private float spawnDistMax = 15;
+    private float spawnTimer;
     public float waveTimer;
-    public float hazardTimer;
-    public float hazardRate;
-    public Vector3 parentLoc;
-    public Vector3 dirVec;
+    private float hazardTimer;
+    private float hazardRate = 5f;
+    private Vector3 parentLoc;
+    private Vector3 dirVec;
     public GameObject enemyPrefab;
     public GameObject potshotPrefab;
     public GameObject howlPrefab;
     public GameObject boss1Prefab;
     public GameObject boss2Prefab;
     GameObject enemy;
-    public int randCheck;
+    private int randCheck = 0;
 
     public int waveid = 0;
-    public int spawnLimit;
-    public float spawnRate;
-    public float waveGoal;
-    public string[] enemies = new string[2];
-    public float ratio;
-    public string hazard;
+    private int spawnLimit;
+    private float spawnRate;
+    private float waveGoal;
+    private string[] enemies = new string[2];
+    private float ratio;
+    private string hazard;
 
-    public int enemycnt;
-    public wavesListData wavesList;
-    public waveData wave;
-    public bool pause;
+    private int enemycnt;
+    private wavesListData wavesList;
+    private waveData wave;
+    private bool pause;
 
-    public bool potshot;
-    public bool howl;
-    public float DMGBonus;
+    private bool potshot;
+    private bool howl;
+    private float DMGBonus;
     // Start is called before the first frame update
     void Start()
     {

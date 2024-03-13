@@ -40,8 +40,8 @@ public class enemybasescript : MonoBehaviour
         attackout.statusDur = 0;
         Playerdata = GameObject.FindWithTag("Player");
         targetDif = new Vector3(0.0f, 0.0f, 0.0f);
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         scale.Set(size, size, 0);
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -114,6 +114,7 @@ public class enemybasescript : MonoBehaviour
 
     public void setData(string data)
     {
+
         stats = JsonUtility.FromJson<enemyData>(data);
         health = stats.HP;
         entitySpeed = stats.speed;
@@ -127,6 +128,8 @@ public class enemybasescript : MonoBehaviour
         Frames = stats.animFrames;
         frameRate = stats.frameRate;
         size = stats.size;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = newSprites[0];
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -19,6 +19,12 @@ public class wavewriter : MonoBehaviour
 
     public GameObject backgroundPrefab;
     GameObject background;
+
+    public GameObject EventSystem;
+    GameObject events;
+
+    public GameObject PauseScreen;
+    GameObject pause;
     public string[] enemies = new string[6];
 
 
@@ -237,6 +243,8 @@ public class wavewriter : MonoBehaviour
         string filePath = Application.persistentDataPath + "/WaveFile.json";
         File.WriteAllText(filePath, wavesList.SaveToString());
         deathscreen = Instantiate(deathscreenPrefab, transform.position, transform.rotation);
+        pause = Instantiate(PauseScreen, transform.position, transform.rotation);
+        events = Instantiate(EventSystem, transform.position, transform.rotation);
         player = Instantiate(playerPrefab, transform.position, transform.rotation);
         background = Instantiate(backgroundPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
