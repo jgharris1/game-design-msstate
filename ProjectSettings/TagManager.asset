@@ -3,7 +3,29 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Bullet
+  - Spawner
+  - PauseTillGone
+  - gun0
+  - gun7
+  - gun1
+  - gun2
+  - gun3
+  - gun4
+  - gun5
+  - gun6
+  - deathscreen
+  - background
+  - pausescreen
+  - Resources.Load<Sprite>(linkBase + (i + 1));
+  - ToBeDeleted
+  - mainScreen
+  - Undefined
+  - ManaSprite
+  - HealthSprite
+  - MainUI
   layers:
   - Default
   - TransparentFX
@@ -11,11 +33,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - player
+  - enemies
+  - bullets
+  - BG1
+  - BG2
   - 
   - 
   - 
@@ -40,4 +62,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG2
+    uniqueID: 2326134539
+    locked: 0
+  - name: BG1
+    uniqueID: 1118577657
+    locked: 0
+  - name: enemies
+    uniqueID: 4277308883
+    locked: 0
+  - name: bullets
+    uniqueID: 28391815
+    locked: 0
+  - name: player
+    uniqueID: 3220573305
     locked: 0
