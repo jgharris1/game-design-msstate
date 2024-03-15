@@ -175,7 +175,7 @@ public class PlayerBaseScript : MonoBehaviour
         if (experience > xpgoal)
         {
             experience -= xpgoal;
-            xpgoal *= 1.5;//--------------------------------------------------------------
+            xpgoal *= (float)1.2;//--------------------------------------------------------------
             bars.SetMaxMana(xpgoal);
             bars.SetMana(experience);
             levelAudio.Play();

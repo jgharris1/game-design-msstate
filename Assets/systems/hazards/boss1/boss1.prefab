@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Playerdata: {fileID: 0}
   targetDif: {x: 0, y: 0, z: 0}
-  health: 700
+  health: 900
   entitySpeed: 1.9
   lineFollow: 0
   immuneFrame: 2
@@ -150,6 +150,7 @@ MonoBehaviour:
   boss: 1
   dirVec: {x: 0, y: 0, z: 0}
   size: 3
+  DMGBonus: 1
 --- !u!114 &5491387827443042544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,20 +163,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1a8b991a12a674085b2849df8ef261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
   fireSprite:
   - {fileID: 21300000, guid: 3b4192aa26913d64baafa0a3c1c63598, type: 3}
   - {fileID: 21300000, guid: 497504080eae9d545ab7aa0ea8d2d21f, type: 3}
   fireSpriteExists: 1
-  fireTimer: 0
-  burstTimer: 0
-  fireRate: 5
   hazardPrefab: {fileID: 977006039692646235, guid: 61093fca2420b0540bd680d45398afaa, type: 3}
-  burstcnt: 0
-  firePer: 1
   selfData: {fileID: 2601965336211686249}
-  health: 0
-  healthGoal: 0
+  id: 0
 --- !u!70 &7288177941730944447
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
