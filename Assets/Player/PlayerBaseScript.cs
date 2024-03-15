@@ -171,10 +171,11 @@ public class PlayerBaseScript : MonoBehaviour
 
     public void addEXP(float xp)
     {
-        experience += (int)(xp * XPBonus);
+        experience += (xp * XPBonus);
         if (experience > xpgoal)
         {
             experience -= xpgoal;
+            experience = (int)experience;
             if (xpgoal > 175)
             {
                 xpgoal += 20;
