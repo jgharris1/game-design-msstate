@@ -175,7 +175,21 @@ public class PlayerBaseScript : MonoBehaviour
         if (experience > xpgoal)
         {
             experience -= xpgoal;
-            xpgoal *= 1.2f;//--------------------------------------------------------------
+            if (xpgoal > 175)
+            {
+                xpgoal += 20;
+            }
+            else
+            {
+                xpgoal *= 1.2f;    
+            }
+            //Heal on level up
+            if (health < healthMax)
+            {
+                health +=1;
+            }
+            bars.SetHealth(health);
+
             bars.SetMaxMana(xpgoal);
             bars.SetMana(experience);
             levelAudio.Play();
