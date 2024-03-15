@@ -60,7 +60,7 @@ public class IntimidatingAuraScript : MonoBehaviour
         switch (level)
         {
             case 2:
-                transform.localScale = new Vector3(1.25f, 1.25f, 0f);
+                transform.localScale = new Vector3(3.75f, 3.75f, 0f);
                 halo.range = 5f;
                 break;
             case 3:
@@ -70,7 +70,7 @@ public class IntimidatingAuraScript : MonoBehaviour
                 damage = 5;
                 break;
             case 5:
-                transform.localScale = new Vector3(1.45f, 1.45f, 0f);
+                transform.localScale = new Vector3(4.35f, 4.35f, 0f);
                 halo.range = 5.8f;
                 damage = 6;
                 break;
@@ -81,7 +81,7 @@ public class IntimidatingAuraScript : MonoBehaviour
                 damage = 8;
                 break;
             case 8:
-                transform.localScale = new Vector3(1.65f, 1.65f, 0f);
+                transform.localScale = new Vector3(4.95f, 4.95f, 0f);
                 halo.range = 6.6f;
                 break;
             case 9:
