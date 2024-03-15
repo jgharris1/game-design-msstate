@@ -6,8 +6,19 @@ public class PauseScript : MonoBehaviour
 {
     public static bool paused = false;
     public GameObject pauseUI;
+    GameObject player;
+    GameObject background;
+    GameObject menu;
+    public GameObject Mainmenu;
+    GameObject death;
+    public GameObject spawner;
 
-   public void NotQuiteStart()
+    void Start()
+    {
+        death = GameObject.Find("deathscreen(Clone)");
+    }
+
+    public void NotQuiteStart()
     {
         pauseUI=GameObject.FindGameObjectWithTag("pausescreen");
         pauseUI.SetActive(false);
@@ -41,5 +52,30 @@ public class PauseScript : MonoBehaviour
         pauseUI.SetActive(true);
             Time.timeScale = 0f;
             paused = true;
+    }
+
+    public void Quit()
+    {
+        spawner = GameObject.FindGameObjectWithTag("Spawner");
+        player = GameObject.FindGameObjectWithTag("Player");
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Destroy(enemy);
+        }
+        foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
+        {
+            Destroy(bullet);
+        }
+        foreach (GameObject ui in GameObject.FindGameObjectsWithTag("ToBeDeleted"))
+        {
+            Destroy(ui);
+        }
+        background = GameObject.FindGameObjectWithTag("background");
+
+        Destroy(player);
+        Destroy(background);
+        menu = Instantiate(Mainmenu, new Vector3(0f, 0f, 0f), transform.rotation);
+        Destroy(death);
+        Time.timeScale = 1f;
     }
 }

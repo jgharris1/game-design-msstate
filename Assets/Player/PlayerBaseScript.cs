@@ -7,14 +7,14 @@ public class PlayerBaseScript : MonoBehaviour
 
     public Vector3 playerDir;
     public Vector3 previousDir;
-    public int health;
-    public int healthMax = 3;
+    private int health;
+    private int healthMax = 3;
     private float entitySpeed = 3;
     private float entitySpeedBackup;
     private damageData attack;
     private bool dead;
-    public float experience = 10.0f;
-    public float xpgoal = 0.0f;
+    private float experience = 0f;
+    private float xpgoal = 10f;
     private bool mad_howl_effect;
     private float mad_howl_timer;
 
@@ -32,6 +32,12 @@ public class PlayerBaseScript : MonoBehaviour
     private GameObject spawner;
     private GameObject deathscreen;
 
+    public HealthSystem bars;
+
+    public inventoryscript inven;
+
+    public levelscript leveling;
+
     private bool[] passives = new bool[8];
     private float[,] passiveFx = new float[8,4] { { 3f, 0f, 0f, 0f }, { 0f, 0.2f, 0f, 0f }, { 0f, 0f, 0.2f, 0f }, { 0f, -0.1f, 0.5f, 0f }, { 0f, 0f, 0f, 0.1f }, { -1f, 0.2f, 0f, 0f }, { 5f, -.1f, 0f, 0f }, { 0f, 0f, -0.1f, 0.25f } };
 
@@ -39,6 +45,10 @@ public class PlayerBaseScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bars.SetMaxHealth(healthMax);
+        bars.SetHealth(healthMax);
+        bars.SetMaxMana(xpgoal);
+        bars.SetMana(experience);
         previousDir = new Vector3(1f, 0f, 0f);
         spawner = GameObject.FindGameObjectWithTag("Spawner");
         deathscreen = GameObject.FindGameObjectsWithTag("deathscreen")[GameObject.FindGameObjectsWithTag("deathscreen").Length-1];
@@ -58,8 +68,6 @@ public class PlayerBaseScript : MonoBehaviour
             guns[i].SetActive(false);
         }
 
-        //guns[0].SetActive(true);
-        //timers[0].have = true;
         timers[0].cooldown = 0.5f;
         timers[1].cooldown = 1f;
         timers[2].cooldown = 1f;
@@ -70,27 +78,8 @@ public class PlayerBaseScript : MonoBehaviour
 
         guns[0].SetActive(true);
         timers[0].have = true;
-        guns[1].SetActive(true);
-        timers[1].have = true;
-        guns[2].SetActive(true);
-        timers[2].have = true;
-        guns[3].SetActive(true);
-        timers[3].have = true;
-        guns[4].SetActive(true);
-        timers[4].have = true;
-        guns[5].SetActive(true);
-        timers[5].have = true;
-        guns[6].SetActive(true);
-        timers[6].have = true;
-        guns[7].SetActive(true);
-        applyPassive(0);
-        applyPassive(1);
-        applyPassive(2);
-        applyPassive(3);
-        applyPassive(4);
-        applyPassive(5);
-        applyPassive(6);
-        applyPassive(7);
+
+        inven.addItem(0, 1);
 
         // delete later^^
         playerDir = new Vector3(0.0f, 0.0f, 0.0f);
@@ -102,8 +91,6 @@ public class PlayerBaseScript : MonoBehaviour
         {
             newSprites[i] = Resources.Load<Sprite>(linkBase + (i + 1));
         }
-        applyPassive(1);
-        applyPassive(1);
     }
 
     // Update is called once per frame
@@ -175,6 +162,7 @@ public class PlayerBaseScript : MonoBehaviour
     {
         attack = JsonUtility.FromJson<damageData>(attackStr);
         health -= attack.damage;
+        bars.SetHealth(health);
         if (health <= 0)
         {
             InstDeath();
@@ -187,22 +175,40 @@ public class PlayerBaseScript : MonoBehaviour
         if (experience > xpgoal)
         {
             experience -= xpgoal;
-            xpgoal += 1;//--------------------------------------------------------------
+            xpgoal += 0;//--------------------------------------------------------------
+            bars.SetMaxMana(xpgoal);
+            bars.SetMana(experience);
             levelAudio.Play();
             levelup();
+        }
+        else 
+        {
+            bars.SetMana(experience);
         }
     }
 
     public void levelup()
     {
-        guns[0].SendMessage("Upgrade");
-        guns[1].SendMessage("Upgrade");
-        guns[2].SendMessage("Upgrade");
-        guns[3].SendMessage("Upgrade");
-        guns[4].SendMessage("Upgrade");
-        guns[5].SendMessage("Upgrade");
-        guns[6].SendMessage("Upgrade");
-        guns[7].SendMessage("Upgrade");
+        leveling.load();
+    }
+
+    public void receivelevelup(int id, int weapon)
+    {
+        if (weapon == 1)
+        {
+            inven.addItem(id, weapon);
+            guns[id].SetActive(true);
+            if (id != 7)
+            {
+                timers[id].have = true;
+            }
+            guns[id].SendMessage("Upgrade");
+        }
+        else
+        {
+            inven.addItem(id, weapon);
+            applyPassive(id);
+        }
     }
 
     public void changeFR(int weaponID, float new_fireRate)
@@ -249,6 +255,8 @@ public class PlayerBaseScript : MonoBehaviour
         {
             InstDeath();
         }
+        bars.SetHealth(health);
+        bars.SetMaxHealth(healthMax);
     }
 
     public void InstDeath()
@@ -261,6 +269,7 @@ public class PlayerBaseScript : MonoBehaviour
         scale.x = 3;
         transform.localScale = scale;
         Camera.main.gameObject.transform.Rotate(0f, 0f, -90f, Space.Self);
+        Destroy(GameObject.Find("pause(Clone)"));
         deathscreen.SetActive(true);
     }
 }

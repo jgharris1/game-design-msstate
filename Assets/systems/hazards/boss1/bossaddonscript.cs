@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class bossaddonscript : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     public Sprite[] fireSprite = new Sprite[2];
     public bool fireSpriteExists;
-    public float fireTimer;
-    public float burstTimer;
-    public float fireRate;
+    private float fireTimer;
+    private float burstTimer;
+    private float fireRate = 5f;
     public GameObject hazardPrefab;
-    public int burstcnt;
-    public int firePer = 1;
+    private int burstcnt;
+    private int firePer = 1;
     GameObject hazard;
     public enemybasescript selfData;
-    public int health;
-    public int healthGoal;
+    private int health;
+    private int healthGoal;
+    public int id;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +44,10 @@ public class bossaddonscript : MonoBehaviour
         }
         if (fireTimer > fireRate)
         {
+            if (burstcnt == firePer && id == 1)
+            {
+                GetComponent<AudioSource>().Play();
+            }
             if (burstcnt == 0)
             {
                 fireTimer = 0f;

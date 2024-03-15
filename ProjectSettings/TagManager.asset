@@ -18,6 +18,14 @@ TagManager:
   - gun6
   - deathscreen
   - background
+  - pausescreen
+  - Resources.Load<Sprite>(linkBase + (i + 1));
+  - ToBeDeleted
+  - mainScreen
+  - Undefined
+  - ManaSprite
+  - HealthSprite
+  - MainUI
   layers:
   - Default
   - TransparentFX

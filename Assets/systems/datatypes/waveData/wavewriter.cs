@@ -31,6 +31,7 @@ public class wavewriter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(WaitFile());
         if (GameObject.FindGameObjectsWithTag("deathscreen").Length > 0)
         {
             Destroy(GameObject.FindGameObjectWithTag("deathscreen"));
@@ -251,4 +252,11 @@ public class wavewriter : MonoBehaviour
     }
 
 
+    IEnumerator WaitFile()
+    {
+        while (GameObject.FindGameObjectsWithTag("mainScreen").Length != 0)
+        {
+            yield return null;
+        }
+    }
 }

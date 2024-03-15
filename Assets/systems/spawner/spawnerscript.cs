@@ -36,6 +36,8 @@ public class spawnerscript : MonoBehaviour
     private bool potshot;
     private bool howl;
     private float DMGBonus;
+
+    public wavescript wavedisplay;
     // Start is called before the first frame update
     void Start()
     {
@@ -106,6 +108,7 @@ public class spawnerscript : MonoBehaviour
         hazard = wave.hazard;
         enemies = wave.enemies;
         waveid += 1;
+        wavedisplay.changeWave(waveid);
         if (hazard.Length > 0)
         {
             if (hazard == "potshot")

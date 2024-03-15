@@ -7,7 +7,7 @@ public class weapon2script : MonoBehaviour
     public GameObject bulletPrefab;
     GameObject bullet;
     private PlayerBaseScript playerData;
-    public int level = 1;
+    private int level = 0;
     private int damage = 8;
     private float speed = 4f;
     private float size = 1f;

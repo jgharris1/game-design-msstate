@@ -12,7 +12,7 @@ public class IntimidatingAuraScript : MonoBehaviour
     private int statusId = 0;
     private int statusLevel = 0;
     private float statusDur = 0;
-    public int level = 1;
+    private int level = 0;
     public Light halo;
     // Start is called before the first frame update
     void Start()

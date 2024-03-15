@@ -35,6 +35,7 @@ public class backgroundscript : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(WaitFile());
         constminvec = new Vector3(0, 0, 0);
         constmaxvec = new Vector3(Screen.width, Screen.height, 0);
         bottomLeft = Camera.main.ScreenToWorldPoint(constminvec);
@@ -287,6 +288,14 @@ public class backgroundscript : MonoBehaviour
             }
             curmin.Set(curmin.x, innercurmin.y, 0f);
             innercurmin.Set(innercurmin.x, innercurmin.y + 1 * spacing.y * scaleset, 0f);
+        }
+    }
+
+    IEnumerator WaitFile()
+    {
+        while (GameObject.FindGameObjectsWithTag("MainCamera").Length != 0)
+        {
+            yield return null;
         }
     }
 }

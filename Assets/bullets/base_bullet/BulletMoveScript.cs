@@ -145,11 +145,18 @@ public class BulletMoveScript : MonoBehaviour
                     }
                     i += 1;
                 }
-                GameObject.FindGameObjectsWithTag("Enemy")[j].SendMessage("damageApply", attack.SaveToString());
-                transform.position = GameObject.FindGameObjectsWithTag("Enemy")[j].transform.position;
-                scale = new Vector3(0f, 0f, 0f);
-                sprite = GetComponent<SpriteRenderer>();
-                sprite.material.color = new Color(0f, 1f, 0f, 1f);
+                if (h < 5f)
+                {
+                    GameObject.FindGameObjectsWithTag("Enemy")[j].SendMessage("damageApply", attack.SaveToString());
+                    transform.position = GameObject.FindGameObjectsWithTag("Enemy")[j].transform.position;
+                    scale = new Vector3(0f, 0f, 0f);
+                    sprite = GetComponent<SpriteRenderer>();
+                    sprite.material.color = new Color(0f, 1f, 0f, 1f);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
             else
             {
