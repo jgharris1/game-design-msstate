@@ -57,27 +57,27 @@ public class wavewriter : MonoBehaviour
         enemies[1] = enemy.SaveToString();
 
         enemy.name = "vulture";
-        enemy.HP = 16;
+        enemy.HP = 12;
         enemy.speed = 1.7f;
-        enemy.XP = 1.2f;
+        enemy.XP = 1.25f;
         enemy.animFrames = 1;
         enemy.frameRate = .3f;
         enemy.size = 3;
         enemies[2] = enemy.SaveToString();
 
         enemy.name = "coyote";
-        enemy.HP = 24;
+        enemy.HP = 20;
         enemy.speed = 1.7f;
-        enemy.XP = 1.2f;
+        enemy.XP = 1.4f;
         enemy.animFrames = 2;
         enemy.frameRate = .3f;
         enemy.size = 3;
         enemies[3] = enemy.SaveToString();
 
         enemy.name = "wolf";
-        enemy.HP = 30;
+        enemy.HP = 35;
         enemy.speed = 1.8f;
-        enemy.XP = 1.3f;
+        enemy.XP = 1.5f;
         enemy.animFrames = 2;
         enemy.frameRate = .3f;
         enemy.size = 3;
@@ -86,7 +86,7 @@ public class wavewriter : MonoBehaviour
         enemy.name = "blackwolf";
         enemy.HP = 40;
         enemy.speed = 1.8f;
-        enemy.XP = 1.5f;
+        enemy.XP = 2.0f;
         enemy.animFrames = 2;
         enemy.frameRate = .3f;
         enemy.size = 3;

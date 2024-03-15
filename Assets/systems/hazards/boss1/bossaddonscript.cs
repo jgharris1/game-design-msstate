@@ -24,7 +24,7 @@ public class bossaddonscript : MonoBehaviour
         burstcnt = firePer;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         health = selfData.health;
-        healthGoal = health - 70;
+        healthGoal = health - 90;
     }
 
     // Update is called once per frame
