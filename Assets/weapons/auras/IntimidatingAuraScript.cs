@@ -89,5 +89,4 @@ public class IntimidatingAuraScript : MonoBehaviour
                 break;
         }
     }
-
 }
