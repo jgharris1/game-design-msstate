@@ -13,7 +13,7 @@ public class PlayerBaseScript : MonoBehaviour
     private float entitySpeedBackup;
     private damageData attack;
     private bool dead;
-    private float experience = 0f;
+    public float experience = 0f;
     private float xpgoal = 10f;
     private bool mad_howl_effect;
     private float mad_howl_timer;
@@ -196,10 +196,7 @@ public class PlayerBaseScript : MonoBehaviour
             levelAudio.Play();
             levelup();
         }
-        else 
-        {
-            bars.SetMana(experience);
-        }
+        bars.SetMana(experience);
     }
 
     public void levelup()

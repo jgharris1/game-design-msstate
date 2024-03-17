@@ -265,7 +265,11 @@ public class levelscript : MonoBehaviour
                 slots[i, 1] = valid[Ran][1];
                 valid.Remove(valid[Ran]);
             }
-            Panels[2].SetActive(false);
+            Ran = Random.Range(0, valid.Count);
+            loadItem(2, valid[Ran][0], valid[Ran][1], valid[Ran][2]);
+            slots[2, 0] = valid[Ran][0];
+            slots[2, 1] = valid[Ran][1];
+            valid.Remove(valid[Ran]);
         }
         if (valid.Count == 1)
         {
@@ -277,12 +281,23 @@ public class levelscript : MonoBehaviour
                 slots[i, 1] = valid[Ran][1];
                 valid.Remove(valid[Ran]);
             }
-            Panels[1].SetActive(false);
+            Ran = Random.Range(0, valid.Count);
+            loadItem(1, valid[Ran][0], valid[Ran][1], valid[Ran][2]);
+            slots[1, 0] = valid[Ran][0];
+            slots[1, 1] = valid[Ran][1];
+            valid.Remove(valid[Ran]);
+            Ran = Random.Range(0, valid.Count);
+            loadItem(2, valid[Ran][0], valid[Ran][1], valid[Ran][2]);
+            slots[2, 0] = valid[Ran][0];
+            slots[2, 1] = valid[Ran][1];
+            valid.Remove(valid[Ran]);
+
         }
         if (valid.Count == 0)
         {
+            Debug.Log("0 Valid");
             Time.timeScale = 1f;
-            pause.SetActive(false);
+            pause.SetActive(true);
             canvas.enabled = false;
             mainUI.SetActive(true);
         }
@@ -306,6 +321,7 @@ public class levelscript : MonoBehaviour
 
     public void makeChoice(int num)
     {
+        Debug.Log(valid.Count);
         player.GetComponent<PlayerBaseScript>().receivelevelup(slots[num, 0], slots[num, 1]);
         if (levels[slots[num, 1], slots[num, 0]] == 0)
         {
@@ -324,14 +340,18 @@ public class levelscript : MonoBehaviour
     {
         valid.Clear();
         int validcnt = 0;
+        //I = 0 means passives
+        //I = 1 means weapons
         for (int i = 0; i < 2; i++)
         {
             
             for (int h = 0; h < 8; h++)
             {
+                //Passives
                 if (i == 0 && levels[i, h] == 0)
                 {
-                    if (!(cnts[0] == 6 && !levelsbool[i, h]))
+                    //If we do not have 6 passives & the passive is not max level
+                    if (cnts[0] != 6)
                     {
                         valid.Add(new List<int>());
                         valid[validcnt].Add(h);
@@ -340,9 +360,11 @@ public class levelscript : MonoBehaviour
                         validcnt += 1;
                     }
                 }
-                if (i == 1 && levels[i, h] < 9)
+                //Weapons
+                else if (i == 1 && levels[i, h] < 9)
                 {
-                    if (!(cnts[1] == 6 && !levelsbool[i, h]))
+                    //If we do not have 6 weapons & the weapon Not (have 6 weapons OR NOTMaxlevl)
+                    if (cnts[1] != 6 || !levelsbool[i, h])
                     {
                         valid.Add(new List<int>());
                         valid[validcnt].Add(h);
