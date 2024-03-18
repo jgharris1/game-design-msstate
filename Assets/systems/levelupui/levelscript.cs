@@ -295,7 +295,6 @@ public class levelscript : MonoBehaviour
         }
         if (valid.Count == 0)
         {
-            Debug.Log("0 Valid");
             Time.timeScale = 1f;
             pause.SetActive(true);
             canvas.enabled = false;
@@ -321,7 +320,6 @@ public class levelscript : MonoBehaviour
 
     public void makeChoice(int num)
     {
-        Debug.Log(valid.Count);
         player.GetComponent<PlayerBaseScript>().receivelevelup(slots[num, 0], slots[num, 1]);
         if (levels[slots[num, 1], slots[num, 0]] == 0)
         {
@@ -364,7 +362,9 @@ public class levelscript : MonoBehaviour
                 else if (i == 1 && levels[i, h] < 9)
                 {
                     //If we do not have 6 weapons & the weapon Not (have 6 weapons OR NOTMaxlevl)
-                    if (cnts[1] != 6 || !levelsbool[i, h])
+                    //If we do not have 6 weapons
+                        //If the weapon we have is not max level
+                    if (!(cnts[1] == 6 && !levelsbool[i, h]))
                     {
                         valid.Add(new List<int>());
                         valid[validcnt].Add(h);
